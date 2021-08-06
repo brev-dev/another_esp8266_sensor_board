@@ -75,24 +75,36 @@ There are some debates about the best way to connect RST to GPIO16 in order to u
 [Pair](https://github.com/brev-dev/another_esp8266_sensor_board/blob/5aa659a7452a0eb0ab53f27bc85ff3bf4364177d/images/lora_pair.jpg)
 
 ### BME280 sensor (temperature, pressure, humidity)
-- sensor outside case
-[Trimmed](https://github.com/brev-dev/another_esp8266_sensor_board/blob/7ec4fd718edccba7780aa4c0607bf689e7137857/images/bme280_trimmed_pins.jpg)
+
+Hey, when did this sensor become so expensive?! As of mid-2021, there's [apparently](https://forum.sensor.community/t/bme280-global-shortage/413) a global shortage which will hopefully end soon. Anyway...
+
+This is a very handy temperature/humidity/pressure sensor. With my board's current mount point, the BME280 sensor-chip sits outside of the enclosure. I find this convenient because I don't have to worry about airflow within the box. If the current geometry offends you, or you need a more robust device where the sensor won't risk getting damaged, consider a redesign on the connection point, or choose an alternative sensor with a built-in cage.
+
+People normally access the sensor via I2C, for which you need to make no board alterations. However, if you need to use the SPI interface, close a [couple](https://github.com/brev-dev/another_esp8266_sensor_board/blob/bff7ac836695f352a52cb5e7e18f4aab712b4d77/images/rear_solder_bridges_bme_spi.jpg) of solder bridges on the rear to connect the additional pins. One of these connections is also used in the current configuration to power the moisture sensor, so alterations would be needed to run both the BME280 (with SPI interface) and a moisture sensor concurrently.
+
+Notes
+- You might find that the soldered pins get in the way of closing the enclosure lid properly. If this is the case you can trim them prior to soldering, like I've done [here](https://github.com/brev-dev/another_esp8266_sensor_board/blob/7ec4fd718edccba7780aa4c0607bf689e7137857/images/bme280_trimmed_pins.jpg).
 
 ### BH1750 sensor (Lux)
-This is a simple and reliable photodiode, combined with an I2C interface. You can buy it in various form-factors, with the light-ball version being particularly convenient for our purposes. [Trim-down the plastic parts of the built-in connector](https://github.com/brev-dev/another_esp8266_sensor_board/blob/7ec4fd718edccba7780aa4c0607bf689e7137857/images/bh1750_trimmed.jpg), and this will now plug directly into a 2mm-pitch pin header, as included on our board version 5. The light ball can be popped off the sensor, and directly mounted into the [top of the enclosure](https://github.com/brev-dev/another_esp8266_sensor_board/blob/5aa659a7452a0eb0ab53f27bc85ff3bf4364177d/images/bh1750_case.jpg).
+This is a simple and reliable photodiode, combined with an I2C interface. You can buy it in various form-factors, with the light-ball version being particularly convenient for our purposes. [Trim-down the plastic parts of the built-in connector](https://github.com/brev-dev/another_esp8266_sensor_board/blob/7ec4fd718edccba7780aa4c0607bf689e7137857/images/bh1750_trimmed.jpg), and this can now plug directly into a standard 2mm-pitch pin header, as included on board V5. The light ball can be popped off the sensor and directly mounted into the [top of the enclosure](https://github.com/brev-dev/another_esp8266_sensor_board/blob/5aa659a7452a0eb0ab53f27bc85ff3bf4364177d/images/bh1750_case.jpg).
 
 #### Notes
 - This sensor can't be mounted at the same time as the MH-Z19C below, for purely physical reasons. There are no port conflicts, so they'll happily operate at the same time if you make PCB changes, or connect them with an extension cable.
 
 ### MH-Z19C sensor (CO<sub>2</sub>)
 
-This is the priciest sensor I use, but I think it's worth it vs the cheaper VOC alternatives. As usual, Andreas Spiess has a good [video](https://youtu.be/FL0L-nic9Vw) on the topic. When I first started this project, the manufacturer was in the process of changing from Z19B to the newer Z19C sensors and they were hard to come by. The situation seems to have improved. Choose a Z19C if available (better performance, apparently), and select the one with pins if you want to directly mount it into the two corresponding board sockets.
+This is the priciest sensor I use, but I think it's worth it vs the cheaper VOC alternatives. It communicates over the UART bus (so esp8266 pins Rx and Tx). You therefore want to ensure the sensor isn't connected if you're trying to flash the ESP or use its serial interface.
+
+To use the MH-Z19C on the board V5, you need to [connect two solder bridges on the rear](https://github.com/brev-dev/another_esp8266_sensor_board/blob/bff7ac836695f352a52cb5e7e18f4aab712b4d77/images/rear_solder_bridges_CO2.jpg). In hindsight I can't think of a good use-case when you wouldn't want those bridged, so I'll probably just swap the pads out for continuous traces on any future version.
 
 #### Notes
+- As usual, Andreas Spiess has a good [video](https://youtu.be/FL0L-nic9Vw) on the topic.
 - As noted above, cannot be mounted on the board at the same time as a BH1750.
-
+- When I first started this project, the manufacturer was in the process of changing from Z19B to the newer Z19C sensors and they were hard to come by. The situation seems to have improved. Choose a Z19C if available (better performance, apparently), and select the one with pins if you plan to directly mount it into the two corresponding board sockets.
 
 ### Water pump
+
+
 
 ### Enclosure
 
