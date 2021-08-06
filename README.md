@@ -18,13 +18,13 @@ The board is designed for the following sensors, as well as motor/pump control (
 
 The use of an esp8266 comes with some limitations, specifically around available GPIO, and only one analog port. This means that not all potential functionality is available at the same time. Yes, these limitations could be overcome either with a port splitter, or by utilizing a different microcontroller such as an ESP32; however part of the fun for me was seeing how much I could do with only the esp8266, and the end result fits all of my use-cases.
 
-### Why use this, and not *\*insert-off-the-shelf-microcontroller-board-here\**?
+### Why use this board, and not *\*insert-off-the-shelf-microcontroller-board-here\**?
 You could (and probably should?!) use something else. I initially designed this board as a way to learn about IoT sensors and circuit design/fabrication. I’ve stuck with it because it provides several advantages over off-the-shelf boards:
 1.	Convenient project-box fit without 3D printing
 2.	No tangle of wires: most sensors are directly mounted to the board
 3.	Theoretically better protection & stability (control over noise-suppression features, battery polarity protection, and voltage supervision). Of course, in practice this benefit is probably more than outweighed by my lack of board-design experience.
 
-## Board Discussion
+## Component Discussion
 
 ### Power
 
@@ -68,12 +68,19 @@ There are some debates about the best way to connect RST to GPIO16 in order to u
 - antenna
 [Top](https://github.com/brev-dev/another_esp8266_sensor_board/blob/493c38c68af71970a35fda9a3fc562d0f8774722/images/antenna_top.jpg)
 [Bottom](https://github.com/brev-dev/another_esp8266_sensor_board/blob/493c38c68af71970a35fda9a3fc562d0f8774722/images/antenna_bottom.jpg)
+[Pair](https://github.com/brev-dev/another_esp8266_sensor_board/blob/5aa659a7452a0eb0ab53f27bc85ff3bf4364177d/images/lora_pair.jpg)
 
 ### BME280 sensor (temperature, pressure, humidity)
 - sensor outside case
+[Trimmed](https://github.com/brev-dev/another_esp8266_sensor_board/blob/7ec4fd718edccba7780aa4c0607bf689e7137857/images/bme280_trimmed_pins.jpg)
 
 ### BH1750 sensor (Lux)
 - connector
+[trimming](https://github.com/brev-dev/another_esp8266_sensor_board/blob/7ec4fd718edccba7780aa4c0607bf689e7137857/images/bh1750_trimmed.jpg)
+[enclosure](https://github.com/brev-dev/another_esp8266_sensor_board/blob/5aa659a7452a0eb0ab53f27bc85ff3bf4364177d/images/bh1750_case.jpg)
+
+### MH-Z19C sensor (CO<sub>2</sub>)
+
 
 ### Water pump
 
