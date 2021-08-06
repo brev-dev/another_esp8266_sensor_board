@@ -28,14 +28,15 @@ You could (and probably should?!) use something else. I initially designed this 
 
 ### Power
 
-The board can be powered either directly from USB, or from a Li-Po battery. Board V4 and earlier used micro-USB; V5 uses USB-C. In each case I chose sockets that were as easy to hand-solder as possible, noting that I only need the power, not data, connectors.
+The board can be powered either directly from USB, or from a Li-Po battery. Board V4 and earlier used micro-USB; V5 uses USB-C. 
 If both battery and USB are connected simultaneously, a power-sharing circuit ensures that only the USB powers the board.
 The battery is used in conjunction with a copy of the common 3-chip TP4056-based module for charging. There’s a switch provided if you’re not using a battery and therefore want to bypass this circuitry. The module includes protection for overcharge, over-discharge, overcurrent and short-circuit. Note that the overcurrent and short-circuit protection is bypassed for the rest of the board (not the battery) when USB is connected, and the power-sharing circuit is therefore active. 
 The standard charging module doesn’t include battery-polarity protection, so I’ve also added that.
 
-#### Random observations
+#### Notes
 - The FS8205 dual MOSFET chip comes in two pachage sizes. I chose the (slightly less common) SOT-23-6 variant because it's easier to hand-solder.
-- As my 3-chip TP4056 charger footprint remains consistent with the widely-available modules, of you have one of those handy, you can piggy-back it, rather than adding components directly to the board.
+- As my 3-chip TP4056 charger footprint remains consistent with the widely-available modules, if you have one of those handy you can simply piggy-back it, rather than adding components directly to the board.
+- I chose USB sockets that were as easy to hand-solder as possible, noting that only the power, not data, connectors are needed. For micro-USB you can find a 2-pin socket ([purchase link](https://www.aliexpress.com/item/33039304643.html)). I haven't found an equivalent for USB-C, but this socket offers a minimal number of connectors (enough for USB2 data as well as power, I believe) ([purchase link](https://www.aliexpress.com/item/4000011358933.html)).
 
 ### LDO regulator
 
