@@ -41,7 +41,7 @@ On board V4 I paired two 1uf tantalum capacitors with the XC6203P332PR, as per t
 
 #### An aside: Cheap ESP-12F adaptor boards
 
-Conveniently, the XC6203P332PR is also compatible with the white ESP12-F adaptor boards. It’s smaller than the provided footprint, but can still soldered onto this footprint with little trouble. Make sure you remove the central 0 resistor on the front of the board if using a board-mounted regulator.
+Conveniently, the XC6203P332PR is also compatible with the white ESP-12F adaptor boards. It’s smaller than the provided footprint, but can still soldered onto this footprint with little trouble. Make sure you remove the central 0 resistor on the front of the board if using a board-mounted regulator.
 
 ### Electrical Noise
 
