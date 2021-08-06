@@ -33,6 +33,10 @@ If both battery and USB are connected simultaneously, a power-sharing circuit en
 The battery is used in conjunction with a copy of the common 3-chip TP4056-based module for charging. There’s a switch provided if you’re not using a battery and therefore want to bypass this circuitry. The module includes protection for overcharge, over-discharge, overcurrent and short-circuit. Note that the overcurrent and short-circuit protection is bypassed for the rest of the board (not the battery) when USB is connected, and the power-sharing circuit is therefore active. 
 The standard charging module doesn’t include battery-polarity protection, so I’ve also added that.
 
+#### Random observations
+- The FS8205 dual MOSFET chip comes in two pachage sizes. I chose the (slightly less common) SOT-23-6 variant because it's easier to hand-solder.
+- As my 3-chip TP4056 charger footprint remains consistent with the widely-available modules, of you have one of those handy, you can piggy-back it, rather than adding components directly to the board.
+
 ### LDO regulator
 
 There’s a dizzying range of possible LDO ICs to choose from. I settled on the XC6203P332PR due to its relatively high current output, and low dropout voltage. Board V4 had footprints for two alternative regulators, which I was planning to test for stability; with the other layout changes I made above, these weren’t needed. 
@@ -55,3 +59,16 @@ However, I’ve yet to notice brown-outs being a problem, so I sometimes skip th
 ### Deep sleep (optional with jumper JP2)
 
 There are some debates about the best way to connect RST to GPIO16 in order to use the ESP8266’s DeepSleep functionality. I’ve erred on the side of caution and added a diode between the two.
+
+### LORA (RFWM95W) module
+- DIO
+- antenna
+
+### BME280 sensor (temperature, pressure, humidity)
+- sensor outside case
+
+### BH1750 sensor (Lux)
+- connector
+
+### Fabrication
+
