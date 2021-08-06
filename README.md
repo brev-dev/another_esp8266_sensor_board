@@ -28,9 +28,10 @@ You could (and probably should?!) use something else. I initially designed this 
 
 ### Power
 
-The board can be powered either directly from USB, or from a Li-Po battery. Board V4 and earlier used micro-USB; V5 uses USB-C. 
+The board can be either powered directly from USB, or from a Li-Po battery. Board V4 and earlier used micro-USB; V5 uses USB-C. The battery connector is a 2-pin JST-PH (2mm pitch), but if you prefer, just solder the wires directly to the connectors.
+
 If both battery and USB are connected simultaneously, a power-sharing circuit ensures that only the USB powers the board.
-The battery is used in conjunction with a copy of the common 3-chip TP4056-based module for charging. There’s a switch provided if you’re not using a battery and therefore want to bypass this circuitry. The module includes protection for overcharge, over-discharge, overcurrent and short-circuit. Note that the overcurrent and short-circuit protection is bypassed for the rest of the board (not the battery) when USB is connected, and the power-sharing circuit is therefore active. 
+The battery is used in conjunction with a copy of the common 3-chip TP4056-based module for charging. There’s a switch provided if you’re not using a battery and want to bypass this circuitry, if if you don't want the battery to charge while USB is connected. The module includes protection for overcharge, over-discharge, overcurrent and short-circuit. Note that the overcurrent and short-circuit protection is bypassed for the rest of the board (not the battery) when USB is connected, and the power-sharing circuit is therefore active. 
 The standard charging module doesn’t include battery-polarity protection, so I’ve also added that.
 
 #### Notes
@@ -59,7 +60,10 @@ I learned the hard way about the electrical-noise sensitivity of the ESP8266: on
 The ESP8266 is susceptible to brown-outs if the voltage is too low (a good explanation of this problem can be found [here](https://youtu.be/cKDv0aN67BY)). In conjunction with the non-instantaneous increase in voltage from the regulator when power is first applied, this can lead to boot problems. To protect against this, I’ve included an optional voltage supervisor (TPS3839G33DBZ) which will only set the chip-enable pin high when voltage is above an appropriate threshold. 
 However, I’ve yet to notice brown-outs being a problem, so I sometimes skip this component.
 
-### Deep sleep (optional with jumper JP2)
+### ESP8266
+- Flashing
+
+#### Deep sleep (optional with jumper JP2)
 
 There are some debates about the best way to connect RST to GPIO16 in order to use the ESP8266’s DeepSleep functionality. I’ve erred on the side of caution and added a diode between the two.
 
@@ -75,11 +79,17 @@ There are some debates about the best way to connect RST to GPIO16 in order to u
 [Trimmed](https://github.com/brev-dev/another_esp8266_sensor_board/blob/7ec4fd718edccba7780aa4c0607bf689e7137857/images/bme280_trimmed_pins.jpg)
 
 ### BH1750 sensor (Lux)
-- connector
-[trimming](https://github.com/brev-dev/another_esp8266_sensor_board/blob/7ec4fd718edccba7780aa4c0607bf689e7137857/images/bh1750_trimmed.jpg)
-[enclosure](https://github.com/brev-dev/another_esp8266_sensor_board/blob/5aa659a7452a0eb0ab53f27bc85ff3bf4364177d/images/bh1750_case.jpg)
+This is a simple and reliable photodiode, combined with an I2C interface. You can buy it in various form-factors, with the light-ball version being particularly convenient for our purposes. [Trim-down the plastic parts of the built-in connector](https://github.com/brev-dev/another_esp8266_sensor_board/blob/7ec4fd718edccba7780aa4c0607bf689e7137857/images/bh1750_trimmed.jpg), and this will now plug directly into a 2mm-pitch pin header, as included on our board version 5. The light ball can be popped off the sensor, and directly mounted into the [top of the enclosure](https://github.com/brev-dev/another_esp8266_sensor_board/blob/5aa659a7452a0eb0ab53f27bc85ff3bf4364177d/images/bh1750_case.jpg).
+
+#### Notes
+- This sensor can't be mounted at the same time as the MH-Z19C below, for purely physical reasons. There are no port conflicts, so they'll happily operate at the same time if you make PCB changes, or connect them with an extension cable.
 
 ### MH-Z19C sensor (CO<sub>2</sub>)
+
+This is the priciest sensor I use, but I think it's worth it vs the cheaper VOC alternatives. As usual, Andreas Spiess has a good [video](https://youtu.be/FL0L-nic9Vw) on the topic. When I first started this project, the manufacturer was in the process of changing from Z19B to the newer Z19C sensors and they were hard to come by. The situation seems to have improved. Choose a Z19C if available (better performance, apparently), and select the one with pins if you want to directly mount it into the two corresponding board sockets.
+
+#### Notes
+- As noted above, cannot be mounted on the board at the same time as a BH1750.
 
 
 ### Water pump
@@ -89,4 +99,8 @@ There are some debates about the best way to connect RST to GPIO16 in order to u
 8mm M2.6 screws are needed to attach the board to the box ([purchase link](https://www.aliexpress.com/item/4000108693024.html)), such as these
 
 ## Fabrication
+
+## Software
+
+
 
