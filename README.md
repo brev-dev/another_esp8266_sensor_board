@@ -9,10 +9,10 @@ The board is specifically designed for the following sensors, as well as motor/p
 
 | Property | Module | Board Connection | Datasheet | Purchase link\*|
 | ---| --- | --- | --- | --- |
-| Temperature, pressure, humidity | BME280 | Direct | | |
+| Temperature, pressure, humidity | BME280 | Direct | [Link]() | |
 | Moisture | “Capacitive soil moisture sensor V1.2” | Audio plug | | [AliExpress](https://www.aliexpress.com/item/32908693444.html) |
 |	Lux | BH1750 | Direct | | [AliExpress](https://www.aliexpress.com/item/32983784786.html) |
-|	CO<sub>2</sub> | MH-Z19C | Direct | [Link](https://github.com/brev-dev/another_esp8266_sensor_board/blob/55dd2d41b445c80636574d447e5fac080cfa47e3/datasheets/mh-z19c-pins-type-co2-manual-ver1_0.pdf)
+|	CO<sub>2</sub> | MH-Z19C | Direct | [Link](https://github.com/brev-dev/another_esp8266_sensor_board/blob/55dd2d41b445c80636574d447e5fac080cfa47e3/datasheets/mh-z19c-pins-type-co2-manual-ver1_0.pdf) | [AliExpress](https://www.aliexpress.com/item/4000586074848.html) |
 
 \**I've purchased from those links in the past, but they're provided with no guarantee. I also don't plan to update them when they inevitably expire.*
 
