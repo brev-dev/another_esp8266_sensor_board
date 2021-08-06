@@ -7,7 +7,7 @@ This repository contains build instructions for a multi-purpose esp8266 sensor m
 
 The board is designed for the following sensors, as well as motor/pump control (for automatic plant watering). GPIO pins remain easily-accessible, so this board can also be used as the basis for many other sensors.
 
-| Property | Module | Board Connection | Datasheet | Purchase link\*|
+| Property | Module | Board Connection | Datasheet | Purchase Link\*|
 | ---| --- | --- | :---: | --- |
 | Temperature, pressure, humidity | BME280 | Direct (2.54mm headers) | [Link](https://github.com/brev-dev/another_esp8266_sensor_board/blob/e3f53c214705e32eaa9f90e711b66ee1d1c71691/datasheets/BST-BME280_DS001-11-844833.pdf) | |
 | Moisture | “Capacitive soil moisture sensor V1.2” | Audio plug | [Link](https://github.com/brev-dev/another_esp8266_sensor_board/blob/e3f53c214705e32eaa9f90e711b66ee1d1c71691/datasheets/sen0193-humedad-de-suelos.pdf) (older version) | [AliExpress](https://www.aliexpress.com/item/32908693444.html) |
@@ -36,15 +36,15 @@ The standard charging module doesn’t include battery-polarity protection, so I
 #### Notes
 - The FS8205 dual MOSFET chip comes in two package sizes. I chose the (slightly less common) SOT-23-6 variant because it's easier to hand-solder.
 - Be aware that some AliExpress vendors are (I suspect accidentally) selling me4056 chips as tp4056. This chip has the same purpose but different pinout, so it won't work on the board. [Here's](https://github.com/brev-dev/another_esp8266_sensor_board/blob/a93f9e18d06ddcca5e1f6364de4ef48cf533c392/images/me4056.jpg) a bag of me4056's I received from one vendor (and was given a full refund when I finally worked-out what the problem was).
-- As my 3-chip TP4056 charger footprint remains consistent with the widely-available modules, if you have one of those handy you can simply piggy-back it, rather than adding components directly to the board. [Here's](https://github.com/brev-dev/another_esp8266_sensor_board/blob/f170df5e5ed5a01450a450957b2c13060da18a92/images/tp4056_piggyback.jpg) a previous board version where I piggy-backed the charger circuit: just join the 6 corner pads. Note that this module also comes with the alternative 8205A MOSFET package.
-- I chose USB sockets that were as easy to hand-solder as possible, noting that only the power, not data, connectors are needed. For micro-USB you can find a [2-pin socket](https://github.com/brev-dev/another_esp8266_sensor_board/blob/e99d01fb7cc91dd79cf12d4cf2d8f64e2b0c8e33/datasheets/microUSB_socket_2pin.jpg) ([purchase link](https://www.aliexpress.com/item/33039304643.html)). I haven't found an equivalent for USB-C, but [this](https://github.com/brev-dev/another_esp8266_sensor_board/blob/e99d01fb7cc91dd79cf12d4cf2d8f64e2b0c8e33/datasheets/usbc_socket_6pin.webp) socket ([purchase link](https://www.aliexpress.com/item/4000011358933.html)) offers a minimal number of connectors (enough for USB2 data as well as power, I believe).
-- If you only need a minimal USB-powered board, you can skip all of the charging, power sharing and reverse polarity components. Just add a USB socket (or connect directly to pads H5 (+5v) and H6 (ground), and bridge diode footprint D2.
+- As my 3-chip TP4056 charger footprint remains consistent with the widely-available modules, if you have one of those handy you can simply piggy-back it, rather than adding components directly to the board. [Here's](https://github.com/brev-dev/another_esp8266_sensor_board/blob/f170df5e5ed5a01450a450957b2c13060da18a92/images/tp4056_piggyback.jpg) an older example where I piggy-backed the charger circuit: just join the 6 corner pads. Note that the pictured module also comes with the alternative 8205A MOSFET package.
+- I chose USB sockets that were as easy to hand-solder as possible, noting that only the power, not data, connectors are needed. For micro-USB you can find a [2-pin socket](https://github.com/brev-dev/another_esp8266_sensor_board/blob/e99d01fb7cc91dd79cf12d4cf2d8f64e2b0c8e33/datasheets/microUSB_socket_2pin.jpg) ([purchase link](https://www.aliexpress.com/item/33039304643.html)). I haven't found an equivalent for USB-C, but [this](https://github.com/brev-dev/another_esp8266_sensor_board/blob/e99d01fb7cc91dd79cf12d4cf2d8f64e2b0c8e33/datasheets/usbc_socket_6pin.webp) socket ([purchase link](https://www.aliexpress.com/item/4000011358933.html)) offers a smaller number of connectors (enough for USB2 data as well as power, I believe).
+- If you only need a minimal USB-powered board, you can skip all of the charging, power sharing and reverse polarity components. Just add a USB socket (or connect directly to pads H5 (+5v) and H6 (ground), and bridge the two pads on diode footprint D2.
 
 ### LDO regulator
 
-There’s a dizzying range of possible LDO ICs to choose from. I settled on the XC6203P332PR due to its relatively high current output, and low dropout voltage. Board V4 had footprints for two alternative regulators, which I was planning to test for stability; with the other layout changes I made above, these weren’t needed. 
+There’s a dizzying range of possible LDO ICs to choose from. I settled on the XC6203P332PR due to its relatively high current output, and low dropout voltage. Board V4 had footprints for two alternative regulators, which I was planning to test for stability, but these weren’t needed and were removed in V5. 
 #### Tantalum capacitors
-On board V4 I paired two 1uf tantalum capacitors with the XC6203P332PR, as per the spec sheet. On two of the PCBs, a capacitor failed after a few weeks of use, causing a short-circuit and lots of smoke (the boards were being USB-powered at the time, so the short-circuit protection didn’t help). After reading tantalum horror-stories online, I decided to experiment with swapping them for ceramics on V5, and have experienced no further problems. I later discovered that the two failures were my fault: I fitted the parts in reverse! I’m sure there’s a good reason why the polarity-marker band on tantalums denotes the positive, while on aluminium capacitors and diodes it denotes the negative, but they tripped-up this newbie.
+On PCB version 4 I paired two 1μF tantalum capacitors with the XC6203, per the [datasheet](https://github.com/brev-dev/another_esp8266_sensor_board/blob/86c8875968cf48237dee9fcda43d4448a1e4a00b/datasheets/XC6203.pdf). One of the caps failed on two of these boards after a few weeks of use, causing a short-circuit and lots of smoke (the boards were being USB-powered at the time). After reading tantalum horror-stories online, I decided to experiment with swapping them for ceramics on V5, and have experienced no further problems. I later discovered that the two failures were my fault: I fitted the parts in reverse! I’m sure there’s a good reason why the polarity-marker band on tantalums denotes the positive, while on aluminium capacitors and diodes it denotes the negative, but they tripped-up this newbie.
 
 #### An aside: Cheap ESP-12F adaptor boards
 
@@ -75,5 +75,11 @@ There are some debates about the best way to connect RST to GPIO16 in order to u
 ### BH1750 sensor (Lux)
 - connector
 
-### Fabrication
+### Water pump
+
+### Enclosure
+
+8mm M2.6 screws are needed to attach the board to the box ([purchase link](https://www.aliexpress.com/item/4000108693024.html)), such as these
+
+## Fabrication
 
