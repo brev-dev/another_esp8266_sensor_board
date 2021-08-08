@@ -28,7 +28,7 @@ You could (and probably should?!) use something else. I initially designed this 
 
 ### Power
 
-The board can be either powered directly from USB, or from a Li-Po battery. Board V4 and earlier used micro-USB; V5 uses USB-C. The cutout on the left of the board is designed to accommodate a 1-cell 18650-battery case such as [this](https://github.com/brev-dev/another_esp8266_sensor_board/blob/e89a59e6fc7c869a731ce79fabf49352d018e9ff/images/18650_battery_case.webp) ([purchase link](https://www.aliexpress.com/item/32993737904.html)). The battery connector is a 2-pin JST-PH (2mm pitch), but if you prefer, just solder the wires directly to the connectors.
+The board can be powered either directly from USB, or from a Li-Po battery. Board V4 and earlier used micro-USB; V5 uses USB-C. The cutout on the left of the board is designed to accommodate a 1-cell 18650-battery case such as [this](https://github.com/brev-dev/another_esp8266_sensor_board/blob/e89a59e6fc7c869a731ce79fabf49352d018e9ff/images/18650_battery_case.webp) ([purchase link](https://www.aliexpress.com/item/32993737904.html)). The battery connector is a 2-pin JST-PH (2mm pitch), but if you prefer, just solder the wires directly to the connectors.
 
 If both battery and USB are connected simultaneously, a power-sharing circuit ensures that only the USB powers the board.
 The battery is used in conjunction with a copy of the common 3-chip TP4056-based module for charging. There’s a switch provided if you’re not using a battery and want to bypass this circuitry, if if you don't want the battery to charge while USB is connected. The module includes protection for overcharge, over-discharge, overcurrent and short-circuit. Note that the overcurrent and short-circuit protection is bypassed for the rest of the board (not the battery) when USB is connected, and the power-sharing circuit is therefore active. 
@@ -63,7 +63,10 @@ The ESP8266 is susceptible to brown-outs if the voltage is too low (a good expla
 However, I’ve yet to notice brown-outs being a problem, so I sometimes skip this component.
 
 ### ESP8266
-- Flashing
+The board is designed for an ESP-12F. I tend to flash the chip in a *** prior to soldering it on, just to check it's working.
+
+When installed, it can be flashed in the normal way by connecting to the appropriate pins.
+
 
 #### Deep sleep (optional with jumper JP2)
 
@@ -134,5 +137,8 @@ For simplicity, and since the small pumps seem to be able to operate over quite 
 
 ## Software
 
+## ToDo (could be done; not necessarily will be done!)
 
+- Convert board to esp32-c3f
+- Add a separately-powered RTC to improve deep-sleep battery drain.
 
