@@ -91,6 +91,7 @@ People normally access the sensor via I2C, for which you need to make no board a
 
 Notes
 - Hey, when did this sensor become so expensive?! As of mid-2021, there's [apparently](https://forum.sensor.community/t/bme280-global-shortage/413) a global shortage which will hopefully end soon.
+- At the current prices, maybe it's worth stumping for the BME680. This looks as though it's pin-compatible for I2C. With SPI, you'd need to swap the two additional pins (which could be achieved with crossing links across solder bridges JP# and JP4)
 
 ### Moisture sensor, and the board's audio-style socket
 I chose to use a 4-pole audio jack to connect the moisture sensors to the board with an eye to the future and other potential devices that I might want to connect (you could for example use a wire to connect unused poles to any desired gpio pin). However, for now, only three of the four pins are used by the moisture sensor, as shown below.
