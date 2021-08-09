@@ -140,7 +140,7 @@ For simplicity, and since the small pumps seem to be able to operate over quite 
 
 ## Software
 
-## ToDo (could be done; not necessarily will be done!)
+## ToDo (_could_ be done; not necessarily _will_ be done!)
 
 - Convert board to esp32-c3f
   - Wire-up extra GPIO
