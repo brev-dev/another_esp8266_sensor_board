@@ -143,5 +143,9 @@ For simplicity, and since the small pumps seem to be able to operate over quite 
 ## ToDo (could be done; not necessarily will be done!)
 
 - Convert board to esp32-c3f
+  - Wire-up extra GPIO
+  - Wire-up extra analog ports
+    - Dedicated battery-monitoring port
+    - Additional moisture-sensor ports
 - Add a separately-powered RTC to improve deep-sleep battery drain.
 
