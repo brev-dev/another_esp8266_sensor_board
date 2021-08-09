@@ -51,7 +51,7 @@ On PCB version 4 I paired two 1μF tantalum capacitors with the XC6203, per the 
 
 #### An aside: Cheap ESP-12F adaptor boards
 
-Conveniently, the XC6203P332PR is also compatible with the white ESP-12F adaptor boards. It’s smaller than the provided footprint, but can still soldered onto this footprint with little trouble. Make sure you remove the central 0 resistor on the front of the board if using a board-mounted regulator.
+Conveniently, the XC6203P332PR is also compatible with the[ white ESP-12F adaptor boards](https://github.com/brev-dev/another_esp8266_sensor_board/blob/0b8a2c9c500916e484b68a6f7c3c33d089ebb65e/images/esp-12f%20white%20adapter.jpg). It’s smaller than the provided footprint, but can still soldered onto this footprint with little trouble. Make sure you remove the central 0 resistor on the front of the board if using a board-mounted regulator.
 
 ### Electrical Noise
 
@@ -63,7 +63,7 @@ The ESP8266 is susceptible to brown-outs if the voltage is too low (a good expla
 However, I’ve yet to notice brown-outs being a problem, so I sometimes skip this component.
 
 ### ESP8266
-The board is designed for an ESP-12F. I tend to flash the chip in a *** prior to soldering it on, just to check it's working.
+The board is designed for an ESP-12F. I tend to flash the chip in a [programmer board](https://github.com/brev-dev/another_esp8266_sensor_board/blob/0b8a2c9c500916e484b68a6f7c3c33d089ebb65e/images/esp-12f%20programmer.jpg) prior to soldering it on, just to check it's working.
 
 When installed, it can be flashed in the normal way by connecting to the appropriate pins.
 
