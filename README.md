@@ -65,7 +65,7 @@ However, I’ve yet to notice brown-outs being a problem, so I sometimes skip th
 ### ESP8266
 The board is designed for an ESP-12F. I tend to flash the chip in a [programmer board](https://github.com/brev-dev/another_esp8266_sensor_board/blob/0b8a2c9c500916e484b68a6f7c3c33d089ebb65e/images/esp-12f%20programmer.jpg) prior to soldering it on, just to check it's working.
 
-When installed, it can be flashed in the normal way by connecting to the appropriate pins.
+When installed, it can be flashed in the normal way by connecting a USB-UART interface board to the appropriate pins.
 
 
 #### Deep sleep (optional with jumper JP2)
@@ -73,13 +73,17 @@ When installed, it can be flashed in the normal way by connecting to the appropr
 There seems to be some online [debates](https://www.esp8266.com/viewtopic.php?f=160&t=13625) about the optimal way to connect RST to GPIO16 in order to use the ESP8266’s DeepSleep functionality. I’ve erred on the side of caution and added a diode between the two.
 
 ### LORA (RFWM95W) module
-such as [here](https://www.aliexpress.com/item/32984655636.html)
-[5dbi antenna](https://www.aliexpress.com/item/32979875502.html)
-- DIO
-- antenna
-[Top](https://github.com/brev-dev/another_esp8266_sensor_board/blob/493c38c68af71970a35fda9a3fc562d0f8774722/images/antenna_top.jpg)
-[Bottom](https://github.com/brev-dev/another_esp8266_sensor_board/blob/493c38c68af71970a35fda9a3fc562d0f8774722/images/antenna_bottom.jpg)
-[Pair](https://github.com/brev-dev/another_esp8266_sensor_board/blob/5aa659a7452a0eb0ab53f27bc85ff3bf4364177d/images/lora_pair.jpg)
+![lorapair](https://github.com/brev-dev/another_esp8266_sensor_board/blob/5aa659a7452a0eb0ab53f27bc85ff3bf4364177d/images/lora_pair.jpg)
+*A pair of LORA-equipped devices in their enclosures*
+
+Combining an esp8266 with a LORA module is a stretch when it comes to available gpio. This board is designed to work with SX1276 LORA modules ([example link](https://www.aliexpress.com/item/32984655636.html)), and leans heavily on the design from [here](https://github.com/hallard/WeMos-Lora), which minimizes needed ports by linking three of the LORA module's pins (DIO0, 1 and 2) to one esp8266 pin via three diodes (board footprints D9, D10 and D11 respectively). This DIO-sharing configuration needs special handling in software. However, for the most simple LORA communications only DIO0 is needed, so for my LORA boards to date I have just bridged D9, and left D10 and D11 disconnected.
+
+#### Antenna
+For testing, you can directly solder the common helical-wire antennas (often included with the purchase of a module) directly to the module's antenna pin. Range will suck, though. For better range attach a higher-gain antenna (I use 5dbi antennas bought [here](https://www.aliexpress.com/item/32979875502.html)). I include an IPEX U.FL-R footprint at AE1. Alternatively, SMA edge-mounted connectors fit nicely on the edge of the board over footprint J5. These can be wired-up as follows (this example is using board V4, but the same will work for V5): [top](https://github.com/brev-dev/another_esp8266_sensor_board/blob/493c38c68af71970a35fda9a3fc562d0f8774722/images/antenna_top.jpg) and [bottom](https://github.com/brev-dev/another_esp8266_sensor_board/blob/493c38c68af71970a35fda9a3fc562d0f8774722/images/antenna_bottom.jpg).
+
+#### Notes
+- Remember to install capacitor C10 if you're adding a LORA module to the board.
+
 
 ### BME280 sensor (temperature, pressure, humidity)
 
@@ -128,16 +132,22 @@ Small water pumps and the necessary flexible tubing are widely available. For ex
 
 For simplicity, and since the small pumps seem to be able to operate over quite a wide voltage range, the pump is supplied with whatever voltage is currently powering the board (defined by the state of the power sharing circuitry): if USB is connected, it'll be 5V minus the forward voltage across diodes D2 and D8; if battery-powered, it'll be the current battery voltage minus the D8 drop. In practice it really doesn't make much of a difference: equivalent watering quantities will be slightly greater over USB, adn the motor will run at a higher pitch.
 
-- connector
+[connector information to be added here]
 
+## Design & Fabrication
+
+![boardlayout](https://github.com/brev-dev/another_esp8266_sensor_board/blob/d6abd56e7cb9d5aa49b46b3e4bf419d78e1f5672/images/board_layout_v5.png)
+*Board V5 layout*
+
+The board was designed in [KiCad](https://www.kicad.org/), and I had them manufactured by [JLCPCB](https://jlcpcb.com). KiCad files and the information required by JLCPCB are provided in the respective directories.
 
 ### Enclosure
 
-8mm M2.6 screws are needed to attach the board to the box ([purchase link](https://www.aliexpress.com/item/4000108693024.html)), such as these
-
-## Fabrication
+8mm M2.6 screws are needed to attach the board to the box, such as these ([purchase link](https://www.aliexpress.com/item/4000108693024.html))
 
 ## Software
+
+[Tasmota and micropython information to be added here]
 
 ## ToDo (_could_ be done; not necessarily _will_ be done!)
 
