@@ -102,7 +102,7 @@ Notes
 ### The board's audio-style socket
 I chose to use a 4-pole audio jack (model PJ313E) to connect the moisture sensors to the board with an eye to the future and other potential devices that I might want to connect (you could for example use a wire to connect unused poles to any desired gpio pin). However, for now, only three of the four pins are used by the moisture sensor, as shown below.
 
-I've experienced one problem with my chosen socket (or maybe the combination of the socket and the plugs I chose): by default, it's failing to make a connection to all four poles. This can be seen in the top image [here](https://github.com/brev-dev/another_esp8266_sensor_board/blob/e8318408b542502163760f25e8133f11a53af489/images/audio_socket_mod.jpg), where the deepest contact-pin isn't deflected. To fox the problem, I snipped/filed-off the protruding plastic front part of the socket ([bottom of image](https://github.com/brev-dev/another_esp8266_sensor_board/blob/e8318408b542502163760f25e8133f11a53af489/images/audio_socket_mod.jpg))
+I've experienced one problem with my chosen socket (or maybe the combination of the socket and the plugs I chose): by default, it's failing to make a connection to all four poles. This can be seen in the top image [here](https://github.com/brev-dev/another_esp8266_sensor_board/blob/e8318408b542502163760f25e8133f11a53af489/images/audio_socket_mod.jpg), where the deepest contact-pin isn't deflected. To fix the problem, I snipped/filed-off the protruding plastic front part of the socket ([bottom image](https://github.com/brev-dev/another_esp8266_sensor_board/blob/e8318408b542502163760f25e8133f11a53af489/images/audio_socket_mod.jpg))
 
 ### Moisture sensor
 
