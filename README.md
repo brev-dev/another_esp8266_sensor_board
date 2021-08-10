@@ -141,6 +141,8 @@ For simplicity, and since the small pumps seem to be able to operate over quite 
 
 The board was designed in [KiCad](https://www.kicad.org/), and I had them manufactured by [JLCPCB](https://jlcpcb.com). KiCad files and the information required by JLCPCB are provided in the respective directories.
 
+Please go-easy on the schematic; I know it's ugly and desperately in need of splitting into multiple parts. Remember, this is my first PCB design!
+
 ### Enclosure
 
 8mm M2.6 screws are needed to attach the board to the box, such as these ([purchase link](https://www.aliexpress.com/item/4000108693024.html))
@@ -150,7 +152,7 @@ The board was designed in [KiCad](https://www.kicad.org/), and I had them manufa
 [Tasmota and micropython information to be added here]
 
 ## ToDo (_could_ be done; not necessarily _will_ be done!)
-
+- Tidy-up the schematic
 - Convert board to esp32-c3f
   - Wire-up extra GPIO
   - Wire-up extra analog ports
