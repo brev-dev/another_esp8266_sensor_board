@@ -142,7 +142,7 @@ For simplicity, and since the small pumps seem to be able to operate over quite 
 ![boardlayout](https://github.com/brev-dev/another_esp8266_sensor_board/blob/d6abd56e7cb9d5aa49b46b3e4bf419d78e1f5672/images/board_layout_v5.png)
 *Board V5 layout*
 
-The board was designed in [KiCad](https://www.kicad.org/), and I had them manufactured by [JLCPCB](https://jlcpcb.com). KiCad files and the information required by JLCPCB are provided in the respective directories.
+The board was designed in [KiCad](https://www.kicad.org/), and I had them manufactured by [JLCPCB](https://jlcpcb.com). KiCad files and the information required by JLCPCB are provided in the board_v* directories.
 
 Please go-easy on the schematic; I know it's ugly and desperately in need of splitting into multiple parts. Remember, this is my first PCB design!
 
@@ -167,7 +167,7 @@ Here are the main settings I changed from their default in the control interface
 - DeepSleepTime 120 (defines the time between readings in seconds if you are using DeepSleep)
 
 #### Notes
-- I have the analog signal reporting as raw values and calibrate this later (in NodeRed). I believe you could also setup the calibration in Tasmota's control interface. On the example device, the moisture sensor gave a reading of 605 when dry and 282 when submerged in water. An Analog0 reading of 482 therefore corresponds to a moisture level of 38%.
+- I leave the analog signal reported as raw values, and then calibrate this later (in NodeRed). I believe you could also setup the calibration in Tasmota's control interface. On the example device, the moisture sensor gave a reading of 605 when dry and 282 when submerged in water. An Analog0 reading of 482 therefore corresponds to a moisture level of 38%.
 
 ### MicroPython
 
