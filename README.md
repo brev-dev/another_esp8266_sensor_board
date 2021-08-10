@@ -18,6 +18,11 @@ The board is designed for the following sensors, as well as motor/pump control (
 
 The use of an esp8266 comes with some limitations, specifically around available GPIO, and only one analog port. This means that not all potential functionality is available at the same time. Yes, these limitations could be overcome either with a port splitter, or by utilizing a different microcontroller such as an ESP32; however part of the fun for me was seeing how much I could do with only the esp8266, and the end result fits all of my use-cases.
 
+![example_board_in_enclosure]()
+*An example device in my preferred project box. This is a V4 board (labeled V3.1), equipped with the BME280 (temperature, pressure and humidity), BH1750 (lux) and moisture (via the audio plug) sensors. The components are in place for a waterign pump (bottom right), although it's not currently plugged-in.
+
+
+
 ### Why use this board, and not *\*insert-off-the-shelf-microcontroller-board-here\**?
 You could (and probably should?!) use something else. I initially designed this board as a way to learn about IoT sensors and circuit design/fabrication. I’ve stuck with it because it provides several advantages over off-the-shelf boards:
 1.	Convenient project-box fit without 3D printing
@@ -149,7 +154,26 @@ Please go-easy on the schematic; I know it's ugly and desperately in need of spl
 
 ## Software
 
-[Tasmota and micropython information to be added here]
+For convenience, I use Tasmota for all devices where possible. Tasmota can't handle LORA, so for these devices I use micropython.
+
+### Tasmota
+Make sure you install the sensors version of the tasmota image.
+Here are some 
+- deep sleep mode switch
+- raw analog values
+
+Here are the main settings I changed from their default in the control interface. Read about these and other settings [here](https://tasmota.github.io/docs/Commands/).
+
+- PulseTime1 12 (for the modules configured for watering on Relay1, choose your watering length here. This example defines the watering length as 1 second)
+- DeepSleepTime 120 (defines the time between readings in seconds if you are using DeepSleep)
+
+#### Notes
+- I have the analog signal reporting as raw values and calibrate this later (in NodeRed). I believe you could also setup the calibration in Tasmota's control interface. On the device pictured in the above example, this moisture sensor gave a reading of 605 when dry and 282 when submerged in water. The picture Analog0 reading of 482 therefore corresponds to a moisture level of 38%.
+
+### MicroPython
+
+[LORA micropython information to be added here]
+
 
 ## ToDo (_could_ be done; not necessarily _will_ be done!)
 - Tidy-up the schematic
