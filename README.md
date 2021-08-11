@@ -171,8 +171,7 @@ Here are the main settings I changed from their default in the control interface
 
 ### MicroPython
 
-[LORA micropython information to be added here]
-
+Look here for my LORA micropython software and instructions: https://github.com/brev-dev/LORA_esp8266_sensor_MQTT_bridge.
 
 ## ToDo (_could_ be done; not necessarily _will_ be done!)
 - Tidy-up the schematic
