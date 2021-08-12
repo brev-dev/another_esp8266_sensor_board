@@ -54,7 +54,7 @@ On PCB version 4 I paired two 1μF tantalum capacitors with the XC6203, per the 
 
 #### An aside: Cheap ESP-12F adaptor boards
 
-Conveniently, the XC6203P332PR is also compatible with the[ white ESP-12F adaptor boards](https://github.com/brev-dev/another_esp8266_sensor_board/blob/0b8a2c9c500916e484b68a6f7c3c33d089ebb65e/images/esp-12f%20white%20adapter.jpg). It’s smaller than the provided footprint, but can still soldered onto this footprint with little trouble. Make sure you remove the central zero-ohm resistor on the front of the board if using a board-mounted regulator.
+Conveniently, the XC6203P332PR is also compatible with the[ white ESP-12F adaptor boards](https://github.com/brev-dev/another_esp8266_sensor_board/blob/0b8a2c9c500916e484b68a6f7c3c33d089ebb65e/images/esp-12f%20white%20adapter.jpg). It’s smaller than the provided footprint, but can still be soldered onto it with little trouble. Make sure you remove the central zero-ohm resistor on the front of the board if using a board-mounted regulator.
 
 ### Electrical Noise
 
