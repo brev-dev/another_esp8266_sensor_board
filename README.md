@@ -109,7 +109,7 @@ I've experienced one problem with my chosen socket (or maybe the combination of 
 
 ### Moisture sensor
 
-In order to stop the moisture sensor running constantly and draining the battery, it's powered directly by gpio12. Bridget he right pad of JP# to the centre to make that connection. It doesn't draw much current, so I've had no problems directly powering the sensor directly from a gpio pin. If it turned out to be a brown-out/stability issue in the future, this connection would need to be replaced by a MOSFET.
+In order to stop the moisture sensor running constantly and draining the battery, it's powered directly by gpio12. Bridge the right pad of JP3 to the centre pad to make that connection. It doesn't draw much current, so I've had no problems directly powering the sensor directly from a gpio pin. If it turned out to be a brown-out/stability issue in the future, this connection would need to be replaced by a MOSFET.
 
 ### BH1750 sensor (Lux)
 This is a simple and reliable photodiode, combined with an I2C interface. You can buy it in various form-factors, with the light-ball version being particularly convenient for our purposes. [Trim-down the plastic parts of the built-in connector](https://github.com/brev-dev/another_esp8266_sensor_board/blob/7ec4fd718edccba7780aa4c0607bf689e7137857/images/bh1750_trimmed.jpg), and this can now plug directly into a standard 2mm-pitch pin header, as included on board V5. The light ball can be popped off the sensor and directly mounted into the [top of the enclosure](https://github.com/brev-dev/another_esp8266_sensor_board/blob/5aa659a7452a0eb0ab53f27bc85ff3bf4364177d/images/bh1750_case.jpg).
