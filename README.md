@@ -184,6 +184,8 @@ My home setup is designed to achieve these goals:
 3. Informing other manual actions, such as ventilation, and some manual plant watering
 4. Purely informational.
 
+To enable heater control in each room, these are plugged into Tasmotized esp8285 smart plugs.
+
 The "hub" is a Raspberry Pi 4 equipped with an MQTT server, NodeRed, InfluxDB, and Grafana. My NodeRed flows could probably be simplified by replacing much of it with HomeAssistant, but I haven't looked into that. The combination of InfluxDB and Grafana is used to visualize the results (examples below), along with the "MQTT Dash" app on our phones to monitor the current status and change temperature and moisture trigger levels. The rpi software stack utilizes Docker and [IOTStack](https://github.com/SensorsIot/IOTstack) for ease of configuration and maintenance. Andreas Spiess has some greeat videos on the topic, including: [#255](https://youtu.be/JdV4x925au0), [#295](https://youtu.be/a6mjt8tWUws), and [#352](https://youtu.be/KJRMjUzlHI8).
 
 ![Temperature Example](https://github.com/brev-dev/another_esp8266_sensor_board/blob/caf0b86783116dad75fac15154bac198f2339cff/images/temperature_example.png)
