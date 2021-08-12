@@ -135,7 +135,7 @@ Small water pumps and the necessary flexible tubing are widely available. For ex
 
 For simplicity, and since the small pumps seem to be able to operate over quite a wide voltage range, the pump is supplied with whatever voltage is currently powering the board (defined by the state of the power sharing circuitry): if USB is connected, it'll be 5V minus the forward voltage across diodes D2 and D8; if battery-powered, it'll be the battery voltage minus the D8 drop. In practice it really doesn't make much of a difference: slightly more water will be pumped during a given time when on USB vs battery-powered.
 
-[connector information to be added here]
+For the pump's board connection, there's a footprint for a DC-002 socket. I considered using a USB socket but thought it was safer not to since the output voltage isn't always the 5V that people would expect. On the board pictured above, I skipped the power-jack socket and simply connected a double pin header socket instead.
 
 ## Design & Fabrication
 
@@ -144,7 +144,7 @@ For simplicity, and since the small pumps seem to be able to operate over quite 
 
 The board was designed in [KiCad](https://www.kicad.org/), and I had them manufactured by [JLCPCB](https://jlcpcb.com). KiCad files and the information required by JLCPCB are provided in the board_v* directories.
 
-Please go-easy on the schematic; I know it's ugly and desperately in need of splitting into multiple parts. Remember, this is my first PCB design!
+Please be understanding with [the schematic](https://github.com/brev-dev/another_esp8266_sensor_board/blob/9ac3180b3b5d9ca07b58c377a639be6fb8d97420/board_v5/schematic_v5.pdf); I know it's ugly and desperately in need of splitting into multiple parts. Remember, this is my first PCB design!
 
 ### Enclosure
 
