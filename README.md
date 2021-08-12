@@ -168,10 +168,28 @@ Here are the main settings I changed from their default in the control interface
 
 #### Notes
 - I leave the analog signal reported as raw values, and then calibrate this later (in NodeRed). I believe you could also setup the calibration in Tasmota's control interface. On the example device, the moisture sensor gave a reading of 605 when dry and 282 when submerged in water. An Analog0 reading of 482 therefore corresponds to a moisture level of 38%.
+- Tasmota can proably also be configured to carry-out the watering function when the moisture goes below a certain level. However, I carry this out in NodeRed, broadcasting the command to the device by MQTT.
 
 ### MicroPython
 
 Look here for my LORA micropython software and instructions: https://github.com/brev-dev/LORA_esp8266_sensor_MQTT_bridge.
+
+## Home IoT Setup
+
+Although not covered by this repo, here are some quick notes on where these devices sit in my full home setup.
+
+My home setup is designed to achieve these goals:
+1. Automatic temperature control
+2. Plant auto-watering
+3. Informing other manual actions, such as ventilation, and some manual plant watering
+4. Purely informational.
+
+The "hub" is a Raspberry Pi 4 equipped with an MQTT server, NodeRed, InfluxDB, and Grafana. My NodeRed flows could probably be simplified by replacing much of it with HomeAssistant, but I haven't looked into that. The combination of InfluxDB and Grafana is used to visualize the results (examples below), along with the "MQTT Dash" app on our phones to monitor the current status and change temperature and moisture trigger levels. The rpi software stack utilizes Docker and [IOTStack](https://github.com/SensorsIot/IOTstack) for ease of configuration and maintenance. Andreas Spiess has some greeat videos on the topic, including: [#255](https://youtu.be/JdV4x925au0), [#295](https://youtu.be/a6mjt8tWUws), and [#352](https://youtu.be/KJRMjUzlHI8).
+
+![Temperature Example](https://github.com/brev-dev/another_esp8266_sensor_board/blob/caf0b86783116dad75fac15154bac198f2339cff/images/temperature_example.png)
+![Moisture Example](https://github.com/brev-dev/another_esp8266_sensor_board/blob/caf0b86783116dad75fac15154bac198f2339cff/images/moisture_example.png)
+![CO2 Example](https://github.com/brev-dev/another_esp8266_sensor_board/blob/caf0b86783116dad75fac15154bac198f2339cff/images/co2_example.png)
+
 
 ## ToDo (_could_ be done; not necessarily _will_ be done!)
 - Tidy-up the schematic
