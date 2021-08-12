@@ -190,6 +190,9 @@ The "hub" is a Raspberry Pi 4 equipped with an MQTT server, NodeRed, InfluxDB, a
 
 ![Temperature Example](https://github.com/brev-dev/another_esp8266_sensor_board/blob/caf0b86783116dad75fac15154bac198f2339cff/images/temperature_example.png)
 ![Moisture Example](https://github.com/brev-dev/another_esp8266_sensor_board/blob/caf0b86783116dad75fac15154bac198f2339cff/images/moisture_example.png)
+
+(the chili plant died from underwatering, soon after relinquishing manual watering control to the wife. An important lesson was learned, which must never be spoken-of again)
+
 ![CO2 Example](https://github.com/brev-dev/another_esp8266_sensor_board/blob/caf0b86783116dad75fac15154bac198f2339cff/images/co2_example.png)
 
 
