@@ -70,6 +70,28 @@ The board is designed for an ESP-12F. I tend to flash the chip in a [programmer 
 
 When installed, it can be flashed in the normal way by connecting a USB-UART interface board to the appropriate pins.
 
+#### Connection summary
+
+| Pin# | Port | Board Connection | Resistor\* | 
+| --- | --- | --- | --- | 
+| 1 | RST | Reset button |  |
+| 2 | ADC | ADC (moisture/battery)|  |
+| 3 | EN | Chip enable | Supervisor / E-PU |
+| 4 | IO16 | DeepSleep |  |
+| 5 | IO14 | I2C SCL / SPI SCK |  |
+| 6 | IO12 | Moisture VCC / SPI SDO-MISO |  |
+| 7 | IO13 | I2C SDA / SPI MOSI |  |
+| 8 | VCC |  |  | VCC |  |
+| 15 | GND |  |  | GND |  |
+| 16 | IO15 | LORA NSS | E-PD |
+| 17 | IO2 | LED / SPI SS |  |
+| 18 | IO0 | Flash button | E-PU |
+| 19 | IO4 | Mode switch (GND: use sleep) | E-PU |
+| 20 | IO5 | Water pump / LORA DIO | E-PD |
+| 21 | RXD | CO2 Tx |  |
+| 22 | TXD | CO2 Rx |  |
+
+\* Resistor attached to pin: I:Internal, E:External, PU:Pull-Up, PD:Pull-Down
 
 #### Deep sleep (optional with jumper JP2)
 
@@ -205,9 +227,6 @@ The "hub" is a Raspberry Pi 4 equipped with an MQTT server, NodeRed, InfluxDB, a
 
 ![Temperature Example](https://github.com/brev-dev/another_esp8266_sensor_board/blob/caf0b86783116dad75fac15154bac198f2339cff/images/temperature_example.png)
 ![Moisture Example](https://github.com/brev-dev/another_esp8266_sensor_board/blob/caf0b86783116dad75fac15154bac198f2339cff/images/moisture_example.png)
-
-(the chili plant died from underwatering, soon after relinquishing manual watering control to the wife. An important lesson was learned, which I have also learned must never be spoken-of again)
-
 ![CO2 Example](https://github.com/brev-dev/another_esp8266_sensor_board/blob/caf0b86783116dad75fac15154bac198f2339cff/images/co2_example.png)
 
 
