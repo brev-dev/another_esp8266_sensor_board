@@ -76,18 +76,18 @@ When installed, it can be flashed in the normal way by connecting a USB-UART int
 | --- | --- | --- | --- | 
 | 1 | RST | Reset button |  |
 | 2 | ADC | ADC (moisture/battery)|  |
-| 3 | EN | Chip enable | Supervisor / E-PU |
+| 3 | EN | Chip enable | Supervisor, or E-PU |
 | 4 | IO16 | DeepSleep |  |
-| 5 | IO14 | I2C SCL / SPI SCK |  |
-| 6 | IO12 | Moisture VCC / SPI SDO-MISO |  |
-| 7 | IO13 | I2C SDA / SPI MOSI |  |
+| 5 | IO14 | I2C SCL, or SPI SCK |  |
+| 6 | IO12 | Moisture VCC, or SPI SDO-MISO |  |
+| 7 | IO13 | I2C SDA, or SPI MOSI |  |
 | 8 | VCC |  |  | VCC |  |
 | 15 | GND |  |  | GND |  |
 | 16 | IO15 | LORA NSS | E-PD |
-| 17 | IO2 | LED / SPI SS |  |
+| 17 | IO2 | LED, & SPI SS |  |
 | 18 | IO0 | Flash button | E-PU |
 | 19 | IO4 | Mode switch (GND: use sleep) | E-PU |
-| 20 | IO5 | Water pump / LORA DIO | E-PD |
+| 20 | IO5 | Water pump, or LORA DIO | E-PD |
 | 21 | RXD | CO2 Tx |  |
 | 22 | TXD | CO2 Rx |  |
 
