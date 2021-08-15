@@ -102,10 +102,25 @@ Notes
   - At the current prices, maybe it's worth stumping for the BME680 (like the BME280, with an additional VOC sensor). This looks as though it's pin-compatible for I2C. With SPI, you'd need to swap the two additional pins (which could be achieved with crossing links across solder bridges JP3 and JP4)
   - If cost is important, some projects are swapping-out the BME280 for an SHT31. This is also I2C, just no pressure sensor. I have no experience of this sensor, but it looks to be a simple swap-in.
 
-### The board's audio-style socket
-I chose to use a 4-pole audio jack (model PJ313E) to connect the moisture sensors to the board with an eye to the future and other potential devices that I might want to connect (you could for example use a wire to connect unused poles to any desired gpio pin). However, for now, only three of the four pins are used by the moisture sensor, as shown below.
+### ADC Connections
 
-I've experienced one problem with my chosen socket (or maybe the combination of the socket and the plugs I chose): by default, it's failing to make a connection to all four poles. This can be seen in the top image [here](https://github.com/brev-dev/another_esp8266_sensor_board/blob/e8318408b542502163760f25e8133f11a53af489/images/audio_socket_mod.jpg), where the deepest contact-pin isn't deflected. To fix the problem, I snipped/filed-off the protruding plastic front part of the socket ([bottom image](https://github.com/brev-dev/another_esp8266_sensor_board/blob/e8318408b542502163760f25e8133f11a53af489/images/audio_socket_mod.jpg))
+A single ADC is available on the esp8266, with a measurement range from 0V to 1V. For measuring higher voltages, a [voltage divider](https://ohmslawcalculator.com/voltage-divider-calculator) is therefore needed. On board V5, the ADC can either be used for peripherals connected to the audio jack, or to monitor the battery voltage if either JP11 or JP5 is closed.
+
+Connections via the audio jack go through a voltage divider with R1=470 kΩ (component R7), R2=200 kΩ (component R8). This permits measurement of voltages up to 3.3V (3.3V is lowered to approximately 0.985V; calibrate the signal for higher accuracy).
+
+The battery connection adds an additional 330 kΩ (component R10) resistor in parallel with component R7, leading to R1=800 kΩ. This increases the measurement range up to 5V.
+
+#### The audio-style socket
+I chose to use a 4-pole audio jack (model PJ313E) to connect the moisture sensors to the board with an eye to the future and other potential devices that I might want to connect (you could for example use a wire to connect unused poles to any desired gpio pin). However, for now, only three of the four poles are connected. Starting from the base to the tip of the audio plug, these are:
+
+| Pole | Connection |
+| --- | --- |
+| 1 | GND |
+| 2 | No connection |
+| 3 | 3.3V (from GPIO12, via JP3) |
+| 4 | To ADC via 3.3V voltage divider |
+
+I've experienced one problem with my chosen socket (or maybe the combination of the socket and the plugs I use): by default, it's failing to make a connection to all four poles. This can be seen in the top image [here](https://github.com/brev-dev/another_esp8266_sensor_board/blob/e8318408b542502163760f25e8133f11a53af489/images/audio_socket_mod.jpg), where the deepest contact-pin isn't deflected. To fix the problem, I snipped/filed-off the protruding plastic front part of the socket ([bottom image](https://github.com/brev-dev/another_esp8266_sensor_board/blob/e8318408b542502163760f25e8133f11a53af489/images/audio_socket_mod.jpg))
 
 ### Moisture sensor
 
