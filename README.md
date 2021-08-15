@@ -75,7 +75,7 @@ When installed, it can be flashed in the normal way by connecting a USB-UART int
 | Pin# | Port | Board Connection | Resistor\* | 
 | --- | --- | --- | --- | 
 | 1 | RST | Reset button |  |
-| 2 | ADC | ADC (moisture/battery)|  |
+| 2 | ADC | ADC (moisture or battery)|  |
 | 3 | EN | Chip enable | Supervisor, or E-PU |
 | 4 | IO16 | DeepSleep |  |
 | 5 | IO14 | I2C SCL, or SPI SCK |  |
@@ -84,7 +84,7 @@ When installed, it can be flashed in the normal way by connecting a USB-UART int
 | 8 | VCC |  |  | VCC |  |
 | 15 | GND |  |  | GND |  |
 | 16 | IO15 | LORA NSS | E-PD |
-| 17 | IO2 | LED, & SPI SS |  |
+| 17 | IO2 | Onboard LED, & SPI SS |  |
 | 18 | IO0 | Flash button | E-PU |
 | 19 | IO4 | Mode switch (GND: use sleep) | E-PU |
 | 20 | IO5 | Water pump, or LORA DIO | E-PD |
