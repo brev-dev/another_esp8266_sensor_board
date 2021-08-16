@@ -60,11 +60,6 @@ Conveniently, the XC6203P332PR is also compatible with the[ white ESP-12F adapto
 
 I learned the hard way about the electrical-noise sensitivity of the ESP8266: on V3 of the board, it would reboot whenever the watering motor was activated. I overcame this in V4 with component repositioning (moving the motor to the far end away from the microcontroller), adding extra capacitors next to the motor connection, increasing power trace width vs signal traces, minimizing loops on the ground plane, and separating the motor ground-plane return path from the rest of the components.
 
-### Voltage supervisor (optional with jumper JP1)
-
-The ESP8266 is susceptible to brown-outs if the voltage is too low (a good explanation of this problem can be found [here](https://youtu.be/cKDv0aN67BY)). In conjunction with the non-instantaneous increase in voltage from the regulator when power is first applied, this can lead to boot problems. To protect against this, I’ve included an optional voltage supervisor (TPS3839G33DBZ) which will only set the chip-enable pin high when voltage is above an appropriate threshold. 
-However, I’ve yet to notice brown-outs being a problem, so I sometimes skip this component.
-
 ### ESP8266
 The board is designed for an ESP-12F. I tend to flash the chip in a [programmer board](https://github.com/brev-dev/another_esp8266_sensor_board/blob/0b8a2c9c500916e484b68a6f7c3c33d089ebb65e/images/esp-12f%20programmer.jpg) prior to soldering it on, just to check it's working.
 
@@ -96,6 +91,11 @@ When installed, it can be flashed in the normal way by connecting a USB-UART int
 #### Deep sleep (optional with jumper JP2)
 
 There seems to be some online [debates](https://www.esp8266.com/viewtopic.php?f=160&t=13625) about the optimal way to connect RST to GPIO16 in order to use the ESP8266’s DeepSleep functionality. I’ve erred on the side of caution and added a diode between the two.
+
+### Voltage supervisor (optional with jumper JP1)
+
+The ESP8266 is susceptible to brown-outs if the voltage is too low (a good explanation of this problem can be found [here](https://youtu.be/cKDv0aN67BY)). In conjunction with the non-instantaneous increase in voltage from the regulator when power is first applied, this can lead to boot problems. To protect against this, I’ve included an optional voltage supervisor ([TPS3839G33DBZ](https://github.com/brev-dev/another_esp8266_sensor_board/blob/4a8da56aba7b092c4e5784e14ad378a6c07b094b/datasheets/tps3839.pdf)) which will only set the chip-enable pin high when voltage is above an appropriate threshold. 
+However, I’ve yet to notice brown-outs being a problem, so I sometimes skip this component.
 
 ### LORA (RFWM95W) module
 ![lorapair](https://github.com/brev-dev/another_esp8266_sensor_board/blob/5aa659a7452a0eb0ab53f27bc85ff3bf4364177d/images/lora_pair.jpg)
