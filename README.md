@@ -128,12 +128,12 @@ Notes
 
 A single ADC is available on the esp8266, with a measurement range from 0V to 1V. For measuring higher voltages, a [voltage divider](https://ohmslawcalculator.com/voltage-divider-calculator) is therefore needed. On board V5, the ADC can either be used for peripherals connected to the audio jack, or to monitor the battery voltage if either JP11 or JP5 is closed.
 
-Connections via the audio jack go through a voltage divider with R1=470 kΩ (component R7), R2=200 kΩ (component R8). This permits measurement of voltages up to 3.3V (3.3V is lowered to approximately 0.985V; calibrate the signal for higher accuracy).
+Connections via the audio jack go through a divider with R1=470 kΩ (component R7), R2=200 kΩ (component R8). This permits measurement of voltages up to 3.3V (3.3V is lowered to approximately 0.985V; calibrate the signal for higher accuracy).
 
-The battery connection adds an additional 330 kΩ (component R10) resistor in parallel with component R7, leading to R1=800 kΩ. This increases the measurement range up to 5V.
+The battery connection adds an additional 330 kΩ (component R10) resistor in series with component R7, leading to R1=800 kΩ. This increases the measurement range up to 5V.
 
 #### The audio-style socket
-I chose to use a 4-pole audio jack (model PJ313E) to connect the moisture sensors to the board with an eye to the future and other potential devices that I might want to connect (you could for example use a wire to connect unused poles to any desired gpio pin). However, for now, only three of the four poles are connected. Starting from the base to the tip of the audio plug, these are:
+I chose to use a 4-pole audio jack (model PJ313E) to connect the moisture sensors to the board. For now, only three of the four poles are connected; the fourth is a spare with an eye to future functionality. Starting from the base to the tip of the audio plug, the current connections are:
 
 | Pole | Connection |
 | --- | --- |
@@ -205,7 +205,8 @@ Here are the main settings I changed from their default in the control interface
 
 #### Notes
 - I leave the analog signal reported as raw values, and then calibrate this later (in NodeRed). I believe you could also setup the calibration in Tasmota's control interface. On the example device, the moisture sensor gave a reading of 605 when dry and 282 when submerged in water. An Analog0 reading of 482 therefore corresponds to a moisture level of 38%.
-- Tasmota can proably also be configured to carry-out the watering function when the moisture goes below a certain level. However, I carry this out in NodeRed, broadcasting the command to the device by MQTT.
+- When configured as above, power is sent to the moisture sensor when Toggle 2 is set to ON. I expect this state to survive reboots and deep sleep because Tasmota's [PowerOnState](https://tasmota.github.io/docs/PowerOnState/) is set to 3. Unfortunately this isn't happening, so the moisture sensor isn't working by default when the device wakes. This is probably fixable within Tasmota's other options (maybe SetOption63?), but for now I've fixed it by adding a retained MQTT POWER2 ON command. 
+- Tasmota can probably also be configured to carry-out the watering function directly when the moisture goes below a certain level. However, I carry this out in NodeRed, broadcasting the command to the device by MQTT.
 
 ### MicroPython
 
