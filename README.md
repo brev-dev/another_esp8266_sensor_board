@@ -16,7 +16,7 @@ The board is designed for the following sensors, as well as motor/pump control (
 
 \**I've purchased from those links in the past, but they're provided with no guarantee. I also don't plan to update them when they inevitably expire.*
 
-The use of an esp8266 comes with some limitations, specifically around available GPIO, and only one analog port. This means that not all potential functionality is available at the same time. Yes, these limitations could be overcome either with a port splitter, or by utilizing a different microcontroller such as an ESP32; however part of the fun for me was seeing how much I could do with only the esp8266, and the end result fits all of my use-cases.
+The use of an esp8266 comes with some limitations, specifically around available GPIO, and only one ADC port. This means that not all potential functionality is available at the same time. Yes, these limitations could be overcome either with a port splitter, or by utilizing a different microcontroller such as an ESP32; however part of the fun for me was seeing how much I could do with only the esp8266, and the end result fits all of my use-cases.
 
 ![example_board v4_in_enclosure](https://github.com/brev-dev/another_esp8266_sensor_board/blob/f81dc558d201dd6b186f64b55d8d96105131c601/images/example_board_v4.jpg)
 *An example device in my preferred project box. This is a V4 board (labeled V3.1), equipped with the BME280 (temperature, pressure and humidity), BH1750 (lux) and moisture (via the audio plug) sensors. The components are in place for a watering pump (bottom right), although it's not currently connected.*
