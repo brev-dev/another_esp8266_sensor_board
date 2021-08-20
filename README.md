@@ -20,6 +20,7 @@ The use of an esp8266 comes with some limitations, specifically around available
 
 ![example_board v4_in_enclosure](https://github.com/brev-dev/another_esp8266_sensor_board/blob/f81dc558d201dd6b186f64b55d8d96105131c601/images/example_board_v4.jpg)
 *An example device in my preferred project box. This is a V4 board (labeled V3.1), equipped with the BME280 (temperature, pressure and humidity), BH1750 (lux) and moisture (via the audio plug) sensors. The components are in place for a watering pump (bottom right), although it's not currently connected.*
+![example board v5](https://github.com/brev-dev/another_esp8266_sensor_board/blob/267a0774d6dde3e93f12f3d21828006e8bcaa9a0/images/example_board_v5.jpg)
 
 ### Why use this board, and not *\*insert-off-the-shelf-microcontroller-board-here\**?
 You could (and probably should?!) use something else. I initially designed this board as a way to learn about IoT sensors and circuit design/fabrication. I’ve stuck with it because it provides several advantages over off-the-shelf boards:
