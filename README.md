@@ -201,7 +201,7 @@ For convenience, I use Tasmota for all devices where possible. Tasmota can't han
 ### Tasmota
 Make sure you install the "sensors" version of the tasmota image.
 
-Here are some Tasmota screenshots from the device [pictured](https://github.com/brev-dev/another_esp8266_sensor_board/blob/f81dc558d201dd6b186f64b55d8d96105131c601/images/example_board_v4.jpg) at the top of this readme.
+Here are some Tasmota screenshots from the V4 device [pictured](https://github.com/brev-dev/another_esp8266_sensor_board/blob/f81dc558d201dd6b186f64b55d8d96105131c601/images/example_board_v4.jpg) at the top of this readme.
 
 ![Tasmota main page example](https://github.com/brev-dev/another_esp8266_sensor_board/blob/f81dc558d201dd6b186f64b55d8d96105131c601/images/tasmota_main_device005.png)  |  ![Tasmota configuration page example](https://github.com/brev-dev/another_esp8266_sensor_board/blob/f81dc558d201dd6b186f64b55d8d96105131c601/images/tasmota_config_device005.png)
 
