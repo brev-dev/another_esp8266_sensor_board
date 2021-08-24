@@ -240,7 +240,7 @@ The "hub" is a Raspberry Pi 4 equipped with Mosquitto, NodeRed, InfluxDB, and Gr
 
 ## ToDo (_could_ be done; not necessarily _will_ be done!)
 - Tidy-up the schematic
-- Convert board to esp32-c3f
+- Convert board to esp32 (potentially the new esp32-c3f, as it's footprint-compatible?)
   - Wire-up extra GPIO
   - Wire-up extra analog ports
     - Dedicated battery-monitoring port
