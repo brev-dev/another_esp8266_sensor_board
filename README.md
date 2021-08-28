@@ -240,6 +240,8 @@ The "hub" is a Raspberry Pi 4 equipped with Mosquitto, NodeRed, InfluxDB, and Gr
 
 ## ToDo (_could_ be done; not necessarily _will_ be done!)
 - Tidy-up the schematic
+- Increase R12 to 10k (or even as high as 33k) to reduce the ferocity of green LED5
+- Increase length of USB-C solder pads
 - Convert board to esp32 (potentially the new esp32-c3f, as it's footprint-compatible?)
   - Wire-up extra GPIO
   - Wire-up extra analog ports
