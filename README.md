@@ -239,12 +239,12 @@ The "hub" is a Raspberry Pi 4 equipped with Mosquitto, NodeRed, InfluxDB, and Gr
 
 
 ## ToDo (_could_ be done; not necessarily _will_ be done!)
+- Bugfix: on/off labels are reversed on the Supervisor silkscreen on back of board. The labels on the front are correct
 - Tidy-up the schematic
 - Increase R12 to 10k (or even as high as 33k) to reduce the ferocity of green LED5
-- Increase length of USB-C solder pads
-- Bugfix: Supervisor on/off silkscreen on back of board (on/off are reversed)
+- Increase length of USB-C pin solder pads
 - Add optional battery-polarity-protection bypass route (short pins 2 & 3 of Q1)
-- Change position/orientation of Q4 (really hard to solder when SW1 is present
+- Change position of, or rotate, Q4 (really hard to solder when SW1 is present)
 - Round corners of board and cutout esp antenna area
 - Remove (and join) JP8 and JP9, the jumpers to the Rx and Tx ports on the CO<sub>2</sub> sensor
 - Add UART-USB interface (e.g. CP2104)
