@@ -90,8 +90,8 @@ When installed, it can be flashed in the normal way by connecting a USB-UART int
 | 18 | IO0 | Flash button | E-PU |
 | 19 | IO4 | Mode switch (GND: use sleep) | E-PU |
 | 20 | IO5 | Water pump, or LORA DIO | E-PD |
-| 21 | RXD | CO2 Tx |  |
-| 22 | TXD | CO2 Rx |  |
+| 21 | RXD | CO<sub>2</sub> Tx |  |
+| 22 | TXD | CO<sub>2</sub> Rx |  |
 
 \* Resistor attached to pin: I:Internal, E:External, PU:Pull-Up, PD:Pull-Down
 
@@ -235,7 +235,7 @@ The "hub" is a Raspberry Pi 4 equipped with Mosquitto, NodeRed, InfluxDB, and Gr
 
 ![Temperature Example](https://github.com/brev-dev/another_esp8266_sensor_board/blob/caf0b86783116dad75fac15154bac198f2339cff/images/temperature_example.png)
 ![Moisture Example](https://github.com/brev-dev/another_esp8266_sensor_board/blob/caf0b86783116dad75fac15154bac198f2339cff/images/moisture_example.png)
-![CO2 Example](https://github.com/brev-dev/another_esp8266_sensor_board/blob/caf0b86783116dad75fac15154bac198f2339cff/images/co2_example.png)
+![CO<sub>2</sub> Example](https://github.com/brev-dev/another_esp8266_sensor_board/blob/caf0b86783116dad75fac15154bac198f2339cff/images/co2_example.png)
 
 
 ## ToDo (_could_ be done; not necessarily _will_ be done!)
@@ -246,6 +246,7 @@ The "hub" is a Raspberry Pi 4 equipped with Mosquitto, NodeRed, InfluxDB, and Gr
 - Add optional battery-polarity-protection bypass route (short pins 2 & 3 of Q1)
 - Change position/orientation of Q4 (really hard to solder when SW1 is present
 - Round corners of board and cutout esp antenna area
+- Remove (and join) JP8 and JP9, the jumpers to the Rx and Tx ports on the CO<sub>2</sub> sensor
 - Convert board to esp32 (potentially the new esp32-c3f, as it's footprint-compatible?)
   - Wire-up extra GPIO
   - Wire-up extra analog ports
