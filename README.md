@@ -242,8 +242,10 @@ The "hub" is a Raspberry Pi 4 equipped with Mosquitto, NodeRed, InfluxDB, and Gr
 - Tidy-up the schematic
 - Increase R12 to 10k (or even as high as 33k) to reduce the ferocity of green LED5
 - Increase length of USB-C solder pads
-- Correct Supervisor on/off silkscreen on back of board (on/off are reversed)
+- Bugfix: Supervisor on/off silkscreen on back of board (on/off are reversed)
 - Add optional battery-polarity-protection bypass route (short pins 2 & 3 of Q1)
+- Change position/orientation of Q4 (really hard to solder when SW1 is present
+- Round corners of board and cutout esp antenna area
 - Convert board to esp32 (potentially the new esp32-c3f, as it's footprint-compatible?)
   - Wire-up extra GPIO
   - Wire-up extra analog ports
