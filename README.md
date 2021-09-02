@@ -185,7 +185,7 @@ For the pump's board connection, there's a footprint for a DC-002 socket. I cons
 
 #### Temperature/humidity/pressure (BME280)
 
-This is a very handy temperature/humidity/pressure sensor. With my board's current mount point, the BME280 sensor-chip sits outside of the enclosure. I find this convenient because I don't have to worry about airflow within the box. If the current geometry offends you, or you need a more robust device where the sensor won't risk getting damaged, consider a redesign on the connection point, or choose an alternative sensor with a built-in cage.
+This is a very handy temperature, humidity, and pressure sensor. With my board's current mount point, the BME280 sensor-chip sits outside of the enclosure. I find this convenient because I don't have to worry about airflow within the box. If the current geometry offends you, or you need a more robust device where the sensor won't risk getting damaged, consider a redesign on the connection point, or choose an alternative sensor with a built-in cage.
 
 You might find that the soldered pins get in the way of closing the enclosure lid properly. If this is the case you can trim them prior to soldering, like I've done [here](https://github.com/brev-dev/another_esp8266_sensor_board/blob/7ec4fd718edccba7780aa4c0607bf689e7137857/images/bme280_trimmed_pins.jpg).
 
