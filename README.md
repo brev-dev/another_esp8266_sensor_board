@@ -236,7 +236,7 @@ The board was designed in [KiCad](https://www.kicad.org/), and manufactured by [
 
 Please be understanding with [the schematic](https://github.com/brev-dev/another_esp8266_sensor_board/blob/9ac3180b3b5d9ca07b58c377a639be6fb8d97420/board_v5/schematic_v5.pdf); I know it's ugly and desperately in need of splitting into multiple parts. Remember, this is my first PCB design!
 
-![boardlayout](https://github.com/brev-dev/another_esp8266_sensor_board/blob/d6abd56e7cb9d5aa49b46b3e4bf419d78e1f5672/images/board_layout_v5.png)
+<img src="https://github.com/brev-dev/another_esp8266_sensor_board/blob/d6abd56e7cb9d5aa49b46b3e4bf419d78e1f5672/images/board_layout_v5.png" width="400">
 *Board V5 layout*
 
 ## Software
