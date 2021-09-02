@@ -144,7 +144,7 @@ Combining an esp8266 with a LORA module is a stretch when it comes to available 
 #### Antenna
 For testing, you can directly solder the common helical-wire antennas (often included with the purchase of a module) directly to the module's antenna pin. Range will suck, though. For better range attach a higher-gain antenna (I use 5dbi antennas bought [here](https://www.aliexpress.com/item/32979875502.html)). I include an IPEX U.FL-R footprint at AE1. Alternatively, SMA edge-mounted connectors fit nicely on the edge of the board over footprint J5. These can be wired-up as follows (this example is using board V4, but the same will work for V5): [top](https://github.com/brev-dev/another_esp8266_sensor_board/blob/493c38c68af71970a35fda9a3fc562d0f8774722/images/antenna_top.jpg) and [bottom](https://github.com/brev-dev/another_esp8266_sensor_board/blob/493c38c68af71970a35fda9a3fc562d0f8774722/images/antenna_bottom.jpg).
 
-#### Notes
+*Notes*
 - Remember to install capacitor C10 if you're adding a LORA module to the board.
 
 ### ADC Connections
@@ -217,12 +217,12 @@ In order to stop the moisture sensor running constantly and draining the battery
 
 ## Design & Fabrication
 
-![boardlayout](https://github.com/brev-dev/another_esp8266_sensor_board/blob/d6abd56e7cb9d5aa49b46b3e4bf419d78e1f5672/images/board_layout_v5.png)
-*Board V5 layout*
-
 The board was designed in [KiCad](https://www.kicad.org/), and manufactured by [JLCPCB](https://jlcpcb.com). KiCad files and the information required by JLCPCB are provided in the board_v* directories.
 
 Please be understanding with [the schematic](https://github.com/brev-dev/another_esp8266_sensor_board/blob/9ac3180b3b5d9ca07b58c377a639be6fb8d97420/board_v5/schematic_v5.pdf); I know it's ugly and desperately in need of splitting into multiple parts. Remember, this is my first PCB design!
+
+![boardlayout](https://github.com/brev-dev/another_esp8266_sensor_board/blob/d6abd56e7cb9d5aa49b46b3e4bf419d78e1f5672/images/board_layout_v5.png)
+*Board V5 layout*
 
 ### Enclosure
 
@@ -244,7 +244,7 @@ Here are the main settings I changed from their default in the control interface
 - PulseTime1 12 (for the modules configured for watering on Relay1, choose your watering length here. This example defines the watering length as 1 second)
 - DeepSleepTime 120 (defines the time between readings in seconds if you are using DeepSleep)
 
-#### Notes
+*Notes*
 - I leave the analog signal reported as raw values, and then calibrate this later (in NodeRed). I believe you could also setup the calibration in Tasmota's control interface. On the example device, the moisture sensor gave a reading of 605 when dry and 282 when submerged in water. An Analog0 reading of 482 therefore corresponds to a moisture level of 38%.
 - When configured as above, power is sent to the moisture sensor when Toggle 2 is set to ON. I expect this state to survive reboots and deep sleep because Tasmota's [PowerOnState](https://tasmota.github.io/docs/PowerOnState/) is set to 3. Unfortunately this isn't happening, so the moisture sensor isn't working by default when the device wakes. This is probably fixable within Tasmota's other options (maybe SetOption63?), but for now I've fixed it by adding a retained MQTT POWER2 ON command. 
 - Tasmota can probably also be configured to carry-out the watering function directly when the moisture goes below a certain level. However, I carry this out in NodeRed, broadcasting the command to the device by MQTT.
