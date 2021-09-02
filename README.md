@@ -19,7 +19,7 @@ This repo contains build instructions for a multi-purpose esp8266 sensor device 
   - [LORA module](https://github.com/brev-dev/another_esp8266_sensor_board#lora-rfwm95w-module)
   - [ADC connections](https://github.com/brev-dev/another_esp8266_sensor_board#adc-connections)
   - [Water pump, and connector](https://github.com/brev-dev/another_esp8266_sensor_board#water-pump-and-connector)
-  - [Enclosure]()
+  - [Enclosure](https://github.com/brev-dev/another_esp8266_sensor_board#enclosure)
   - [Sensors](https://github.com/brev-dev/another_esp8266_sensor_board#sensors)
     - [Temperature/Humidity/Pressure (BME280)](https://github.com/brev-dev/another_esp8266_sensor_board#temperaturehumiditypressure-bme280)
     - [Lux (BH1750)](https://github.com/brev-dev/another_esp8266_sensor_board#lux-bh1750)
@@ -35,7 +35,7 @@ This repo contains build instructions for a multi-purpose esp8266 sensor device 
 
 ## Introduction
 
-This sensor board meets most of my home-automation hardware needs. It fits in a [cheap, widely-available enclosure](https://github.com/brev-dev/another_esp8266_sensor_board/blob/52ce970f76a799b5d4ab854d0ae5fb7a4b1d066b/images/project_box.webp) (no 3d printing required), and can be powered either by a LiPo battery (voltage-monitoring, charging, reverse-polarity, and protection circuitry included) or USB, with appropriate power sharing if the USB and battery are connected simultaneously. On the software side, I’ve kept things as high-level as possible: Tasmota for most usage scenarios; micropython where needed. Communication utilizes the MQTT protocol over Wi-Fi, or LORA (I use the board as both a [remote LORA sensor, and as a LORA-MQTT bridge](https://github.com/brev-dev/LORA_esp8266_sensor_MQTT_bridge/)).
+This sensor board meets most of my home-automation hardware needs. It fits in a [cheap, widely-available enclosure](https://github.com/brev-dev/another_esp8266_sensor_board/blob/f84a305c095048d2f336beb286c9c32f08003d64/images/project_box.jpg) (no 3d printing required), and can be powered either by a LiPo battery (voltage-monitoring, charging, reverse-polarity, and protection circuitry included) or USB, with appropriate power sharing if the USB and battery are connected simultaneously. On the software side, I’ve kept things as high-level as possible: Tasmota for most usage scenarios; micropython where needed. Communication utilizes the MQTT protocol over Wi-Fi, or LORA (I use the board as both a [remote LORA sensor, and as a LORA-MQTT bridge](https://github.com/brev-dev/LORA_esp8266_sensor_MQTT_bridge/)).
 
 The board is designed for the following [sensors](https://github.com/brev-dev/another_esp8266_sensor_board#sensors), as well as motor/pump control (for automatic plant watering). GPIO pins remain easily-accessible, so this board can also be used as the basis for many other sensors.
 
@@ -174,9 +174,7 @@ For the pump's board connection, there's a footprint for a DC-002 socket. I cons
 
 ### Enclosure
 
-![project box](https://github.com/brev-dev/another_esp8266_sensor_board/blob/52ce970f76a799b5d4ab854d0ae5fb7a4b1d066b/images/project_box.webp)
-
-I chose this enclosure for the project because it's cheap, widely-available, and just the right size for the pcb and an 18650 battery.
+I chose [this project box](https://github.com/brev-dev/another_esp8266_sensor_board/blob/f84a305c095048d2f336beb286c9c32f08003d64/images/project_box.jpg) because it's cheap, widely-available, and just the right size for the pcb and an 18650 battery.
 
 8mm M2.6 screws are needed to attach the board to the box, such as [these](https://www.aliexpress.com/item/4000108693024.html).
 
