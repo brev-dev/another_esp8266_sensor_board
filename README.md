@@ -29,7 +29,7 @@ This repo contains build instructions for a multi-purpose esp8266 sensor device 
   - [Tasmota](https://github.com/brev-dev/another_esp8266_sensor_board#tasmota)
   - [Micropython](https://github.com/brev-dev/another_esp8266_sensor_board#micropython)
 - [Home IOT setup](https://github.com/brev-dev/another_esp8266_sensor_board#home-iot-setup)
-- [Todo](https://github.com/brev-dev/another_esp8266_sensor_board#todo-could-be-done-not-necessarily-will-be-done)
+- [ToDo](https://github.com/brev-dev/another_esp8266_sensor_board#todo-could-be-done-not-necessarily-will-be-done)
 
 
 ## Introduction
