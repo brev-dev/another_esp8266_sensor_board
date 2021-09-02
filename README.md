@@ -19,6 +19,7 @@ This repo contains build instructions for a multi-purpose esp8266 sensor device 
   - [LORA module](https://github.com/brev-dev/another_esp8266_sensor_board#lora-rfwm95w-module)
   - [ADC connections](https://github.com/brev-dev/another_esp8266_sensor_board#adc-connections)
   - [Water pump, and connector](https://github.com/brev-dev/another_esp8266_sensor_board#water-pump-and-connector)
+  - [Enclosure]()
   - [Sensors](https://github.com/brev-dev/another_esp8266_sensor_board#sensors)
     - [Temperature/Humidity/Pressure (BME280)](https://github.com/brev-dev/another_esp8266_sensor_board#temperaturehumiditypressure-bme280)
     - [Lux (BH1750)](https://github.com/brev-dev/another_esp8266_sensor_board#lux-bh1750)
@@ -171,6 +172,14 @@ For simplicity, and since the small pumps seem to be able to function over quite
 
 For the pump's board connection, there's a footprint for a DC-002 socket. I considered using a USB socket but decided that was misleading since the output voltage isn't always the 5V that one would expect from USB. On the board pictured above, I skipped the power-jack socket and simply connected a double pin-header socket instead.
 
+### Enclosure
+
+![project box](https://github.com/brev-dev/another_esp8266_sensor_board/blob/52ce970f76a799b5d4ab854d0ae5fb7a4b1d066b/images/project_box.webp)
+
+I chose this enclosure for the project because it's cheap, widely-available, and just the right size for the pcb and an 18650 battery.
+
+8mm M2.6 screws are needed to attach the board to the box, such as [these](https://www.aliexpress.com/item/4000108693024.html).
+
 ### Sensors
 
 
@@ -229,12 +238,6 @@ Please be understanding with [the schematic](https://github.com/brev-dev/another
 
 ![boardlayout](https://github.com/brev-dev/another_esp8266_sensor_board/blob/d6abd56e7cb9d5aa49b46b3e4bf419d78e1f5672/images/board_layout_v5.png)
 *Board V5 layout*
-
-### Enclosure
-
-I chose [this enclosure](https://github.com/brev-dev/another_esp8266_sensor_board/blob/52ce970f76a799b5d4ab854d0ae5fb7a4b1d066b/images/project_box.webp) for the project because it's cheap, widely-available, and just the right size for the pcb and an 18650 battery.
-
-8mm M2.6 screws are needed to attach the board to the box, such as [these](https://www.aliexpress.com/item/4000108693024.html).
 
 ## Software
 
