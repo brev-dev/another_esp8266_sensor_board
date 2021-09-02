@@ -98,7 +98,7 @@ Conveniently, the XC6203P332PR is also compatible with the[ white ESP-12F adapto
 
 I learned the hard way about the electrical-noise sensitivity of the ESP8266: on V3 of the board, it would reboot whenever the watering motor was activated. I overcame this in V4 with component repositioning (moving the motor to the far end away from the microcontroller), adding extra capacitors next to the motor connection, increasing power trace width vs signal traces, minimizing loops on the ground plane, and separating the motor ground-plane return path from the rest of the components.
 
-### ESP8266 [top](https://github.com/brev-dev/another_esp8266_sensor_board#another_esp8266_sensor_board)
+### ESP8266
 The board is designed for an ESP-12F. I tend to flash the chip in a [programmer board](https://github.com/brev-dev/another_esp8266_sensor_board/blob/0b8a2c9c500916e484b68a6f7c3c33d089ebb65e/images/esp-12f%20programmer.jpg) prior to soldering it on, just to check it's working.
 
 When installed, it can be flashed in the normal way by connecting a USB-UART interface board to the appropriate pins.
