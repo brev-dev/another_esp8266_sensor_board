@@ -21,7 +21,7 @@ This repo contains build instructions for a multi-purpose esp8266 sensor device 
   - [Water pump, and connector](https://github.com/brev-dev/another_esp8266_sensor_board#water-pump-and-connector)
   - [Enclosure](https://github.com/brev-dev/another_esp8266_sensor_board#enclosure)
   - [Sensors](https://github.com/brev-dev/another_esp8266_sensor_board#sensors)
-    - [Temperature, humidity, pressure (BME280)](https://github.com/brev-dev/another_esp8266_sensor_board#temperaturehumiditypressure-bme280)
+    - [Temperature, humidity, pressure (BME280)](https://github.com/brev-dev/another_esp8266_sensor_board#temperature-humidity-pressure-bme280)
     - [Lux (BH1750)](https://github.com/brev-dev/another_esp8266_sensor_board#lux-bh1750)
     - [CO<sub>2</sub> (MH-Z19C)](https://github.com/brev-dev/another_esp8266_sensor_board#co2-mh-z19c)
     - [Moisture](https://github.com/brev-dev/another_esp8266_sensor_board#moisture)
