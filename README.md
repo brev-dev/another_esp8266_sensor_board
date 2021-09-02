@@ -2,7 +2,12 @@
 
 This repo contains build instructions for a multi-purpose esp8266 sensor device for home IoT projects. 
 
-- [Introduction]
+![board3d](https://user-images.githubusercontent.com/77922126/128489871-9f01f8df-6a2a-4f25-b7f5-ae4963dc2fc5.png)
+*Board V5, partially populated. Image generated in KiCad.*
+
+## Contents
+
+- [Introduction](https://github.com/brev-dev/another_esp8266_sensor_board#introduction)
   - [Example devices](https://github.com/brev-dev/another_esp8266_sensor_board#example-devices)
   - [Why use this board?](https://github.com/brev-dev/another_esp8266_sensor_board#why-use-this-board-and-not-insert-off-the-shelf-microcontroller-board-here)
 - [Component discussion](https://github.com/brev-dev/another_esp8266_sensor_board#component-discussion)
@@ -12,12 +17,13 @@ This repo contains build instructions for a multi-purpose esp8266 sensor device 
   - [ESP8266](https://github.com/brev-dev/another_esp8266_sensor_board#esp8266)
   - [Voltage supervisor](https://github.com/brev-dev/another_esp8266_sensor_board#voltage-supervisor-optional-with-jumper-jp1)
   - [LORA module](https://github.com/brev-dev/another_esp8266_sensor_board#lora-rfwm95w-module)
-  - [BME280 sensor](https://github.com/brev-dev/another_esp8266_sensor_board#bme280-sensor-temperature-pressure-humidity)
   - [ADC connections](https://github.com/brev-dev/another_esp8266_sensor_board#adc-connections)
-  - [Moisture sensor](https://github.com/brev-dev/another_esp8266_sensor_board#moisture-sensor)
-  - [BH1750 sensor](https://github.com/brev-dev/another_esp8266_sensor_board#bh1750-sensor-lux)
-  - [MH-Z19C sensor](https://github.com/brev-dev/another_esp8266_sensor_board#mh-z19c-sensor-co2)
   - [Water pump, and connector](https://github.com/brev-dev/another_esp8266_sensor_board#water-pump-and-connector)
+  - [Sensors]
+    - [Temperature/Humidity/Pressure (BME280)](https://github.com/brev-dev/another_esp8266_sensor_board#bme280-sensor-temperature-pressure-humidity)
+    - [Moisture](https://github.com/brev-dev/another_esp8266_sensor_board#moisture-sensor)
+    - [Lux (BH1750)](https://github.com/brev-dev/another_esp8266_sensor_board#lux-sensor-bh1750)
+    - [CO<sub>2</sub> (MH-Z19C)](https://github.com/brev-dev/another_esp8266_sensor_board#mh-z19c-sensor-co2)
 - [Design & fabrication](https://github.com/brev-dev/another_esp8266_sensor_board#design--fabrication)
 - [Software](https://github.com/brev-dev/another_esp8266_sensor_board#software)
   - [Tasmota](https://github.com/brev-dev/another_esp8266_sensor_board#tasmota)
@@ -29,9 +35,6 @@ This repo contains build instructions for a multi-purpose esp8266 sensor device 
 ## Introduction
 
 This board meets most of my home-automation hardware needs. It fits in a [cheap, widely-available enclosure](https://github.com/brev-dev/another_esp8266_sensor_board/blob/52ce970f76a799b5d4ab854d0ae5fb7a4b1d066b/images/project_box.webp) (no 3d printing required), and can be powered either by a LiPo battery (voltage-monitoring, charging, reverse-polarity, and protection circuitry included) or USB, with appropriate power sharing if the USB and battery are connected simultaneously. On the software side, I’ve kept things as high-level as possible: Tasmota for most usage scenarios; micropython where needed. Communication utilizes the MQTT protocol over Wi-Fi, or LORA (I use the board as both a [remote LORA sensor, and as a LORA-MQTT bridge](https://github.com/brev-dev/LORA_esp8266_sensor_MQTT_bridge/)).
-
-![board3d](https://user-images.githubusercontent.com/77922126/128489871-9f01f8df-6a2a-4f25-b7f5-ae4963dc2fc5.png)
-*Board V5, partially populated. Image generated in KiCad.*
 
 The board is designed for the following sensors, as well as motor/pump control (for automatic plant watering). GPIO pins remain easily-accessible, so this board can also be used as the basis for many other sensors.
 
@@ -144,21 +147,6 @@ For testing, you can directly solder the common helical-wire antennas (often inc
 #### Notes
 - Remember to install capacitor C10 if you're adding a LORA module to the board.
 
-
-### BME280 sensor (temperature, pressure, humidity)
-
-This is a very handy temperature/humidity/pressure sensor. With my board's current mount point, the BME280 sensor-chip sits outside of the enclosure. I find this convenient because I don't have to worry about airflow within the box. If the current geometry offends you, or you need a more robust device where the sensor won't risk getting damaged, consider a redesign on the connection point, or choose an alternative sensor with a built-in cage.
-
-You might find that the soldered pins get in the way of closing the enclosure lid properly. If this is the case you can trim them prior to soldering, like I've done [here](https://github.com/brev-dev/another_esp8266_sensor_board/blob/7ec4fd718edccba7780aa4c0607bf689e7137857/images/bme280_trimmed_pins.jpg).
-
-The sensor can communicate by I2C or SPI; most people seem to use I2C, for which you need to make no board alterations. If you want the SPI interface, close a [couple](https://github.com/brev-dev/another_esp8266_sensor_board/blob/bff7ac836695f352a52cb5e7e18f4aab712b4d77/images/rear_solder_bridges_bme_spi.jpg) of solder bridges on the rear to connect the additional pins. On board V5, one of these connections also powers the moisture sensor, so alterations would be needed if you want to run both the BME280 (with SPI interface) and a moisture sensor concurrently.
-
-Notes
-- The BME280 is reported to be a nicely precise sensor, but not always accurate. Specifically, the temperature sensor produces high readings (by up to a couple of degrees) due to the heat produced by the sensor itself when active. The level of this offset depends on how you run the sensor: if you only wake it up for readings, putting it to sleep inbetween, the offset is smaller than if you run it continually. However, since the offset appears consistent, you can easily calibrate it out post-measurement.
-- Hey, when did this sensor become so expensive?! As of mid-2021, there's [apparently](https://forum.sensor.community/t/bme280-global-shortage/413) a global shortage which will hopefully end soon.
-  - At the current prices, maybe it's worth stumping for the BME680 (like the BME280, with an additional VOC sensor). This looks as though it's pin-compatible for I2C. With SPI, you'd need to swap the two additional pins (which could be achieved with crossing links across solder bridges JP3 and JP4)
-  - If cost is important, some projects are swapping-out the BME280 for an SHT31. This is also I2C, just no pressure sensor. I have no experience of this sensor, but it looks to be a simple swap-in.
-
 ### ADC Connections
 
 A single ADC is available on the esp8266, with a measurement range from 0V to 1V. For measuring higher voltages, a [voltage divider](https://ohmslawcalculator.com/voltage-divider-calculator) is therefore needed. On board V5, the ADC can either be used for peripherals connected to the audio jack, or to monitor the battery voltage if either JP11 or JP5 is closed.
@@ -179,28 +167,6 @@ I chose to use a 4-pole audio jack (model PJ313E) to connect the moisture sensor
 
 I've experienced one problem with my chosen socket (or maybe the combination of the socket and the plugs I use): by default, it's failing to make a connection to all four poles. This can be seen in the top image [here](https://github.com/brev-dev/another_esp8266_sensor_board/blob/e8318408b542502163760f25e8133f11a53af489/images/audio_socket_mod.jpg), where the deepest contact-pin (Pole 4) isn't deflected. To fix the problem, I snipped/filed-off the protruding plastic front part of the socket ([bottom image](https://github.com/brev-dev/another_esp8266_sensor_board/blob/e8318408b542502163760f25e8133f11a53af489/images/audio_socket_mod.jpg))
 
-### Moisture sensor
-
-In order to stop the moisture sensor running constantly and draining the battery, it's powered directly by gpio12. Bridge the right pad of JP3 to the centre pad to make that connection. It doesn't draw much current, so I've had no problems directly powering the sensor directly from a gpio pin. If it turned out to be a brown-out/stability issue in the future, this connection would need to be replaced by a MOSFET.
-
-### BH1750 sensor (Lux)
-This is a simple and reliable photodiode, combined with an I2C interface. You can buy it in various form-factors, with the light-ball version being particularly convenient for our purposes. [Trim-down the plastic parts of the built-in connector](https://github.com/brev-dev/another_esp8266_sensor_board/blob/7ec4fd718edccba7780aa4c0607bf689e7137857/images/bh1750_trimmed.jpg), and this can now plug directly into a standard 2mm-pitch pin header, as included on board V5. The light ball can be popped off the sensor and directly mounted into the [top of the enclosure](https://github.com/brev-dev/another_esp8266_sensor_board/blob/5aa659a7452a0eb0ab53f27bc85ff3bf4364177d/images/bh1750_case.jpg).
-
-#### Notes
-- This sensor can't be mounted at the same time as the MH-Z19C below, for purely physical reasons. There are no port conflicts, so they'll happily operate concurrently if you make PCB changes, or connect one or other with an extension cable.
-
-### MH-Z19C sensor (CO<sub>2</sub>)
-
-This is the priciest sensor I use, but I think it's worth it vs the cheaper VOC alternatives. It communicates over the UART bus (so esp8266 pins Rx and Tx). You therefore want to ensure the sensor isn't connected if you're trying to flash the ESP or use its serial interface.
-
-To use the MH-Z19C on the board V5, you need to [connect two solder bridges on the rear](https://github.com/brev-dev/another_esp8266_sensor_board/blob/bff7ac836695f352a52cb5e7e18f4aab712b4d77/images/rear_solder_bridges_CO2.jpg). In hindsight I can't think of a good use-case when you wouldn't want those bridged, so I'll probably just swap the pads out for continuous traces on any future version.
-
-#### Notes
-- As usual, Andreas Spiess has a good [video](https://youtu.be/FL0L-nic9Vw) on the topic.
-- This sensor is powered by 5V, not 3.3V like most of the other components. For this reason, you should only use this sensor when running from USB power (the board has no step-up capabilities for getting 5V from the battery, and since the MH-Z19C is designed to be continuously-powered, it'd probably be a big battery drain anyway.
-- As currently wired (board V5) the sensor will continue running even if the board's power switch is turned to off. This is because it's connected earlier in the power circuit: I haven't tested whether it will run reliably on the lower voltage that'll be present after the power-sharing doide D2.
-- As noted above, cannot be mounted on the board at the same time as a BH1750.
-- When I first started this project, the manufacturer was in the process of changing from Z19B to the newer Z19C sensors and they were hard to come by. The situation seems to have improved. Choose a Z19C if available (better performance, apparently), and select the one with pins if you plan to directly mount it into the two corresponding board sockets.
 
 ### Water pump, and connector
 Small water pumps and the necessary flexible tubing are widely available. As discussed [above](https://github.com/brev-dev/another_esp8266_sensor_board/blob/main/README.md#electrical-noise), they're electrically-noisy buggers; hence why the connector for the pump is in the far corner of the board from the esp, and shielded behind two capacitors of its own. It's normally powered by gpio5, via an N-channel MOSFET, or can be manually operated with the optional button SW5.
@@ -208,6 +174,48 @@ Small water pumps and the necessary flexible tubing are widely available. As dis
 For simplicity, and since the small pumps seem to be able to function over quite a wide voltage range, the pump is supplied with whatever voltage is currently powering the board (defined by the state of the power sharing circuitry): if USB is connected, it'll be 5V minus the forward voltage across diodes D2 and D8; if battery-powered, it'll be the battery voltage minus the D8 drop. In practice it really doesn't make much difference: slightly more water will be pumped during a given time when on USB vs battery-powered.
 
 For the pump's board connection, there's a footprint for a DC-002 socket. I considered using a USB socket but decided that was misleading since the output voltage isn't always the 5V that one would expect from USB. On the board pictured above, I skipped the power-jack socket and simply connected a double pin-header socket instead.
+
+### Sensors
+
+#### Temperature/humidity/pressure (BME280)
+
+This is a very handy temperature/humidity/pressure sensor. With my board's current mount point, the BME280 sensor-chip sits outside of the enclosure. I find this convenient because I don't have to worry about airflow within the box. If the current geometry offends you, or you need a more robust device where the sensor won't risk getting damaged, consider a redesign on the connection point, or choose an alternative sensor with a built-in cage.
+
+You might find that the soldered pins get in the way of closing the enclosure lid properly. If this is the case you can trim them prior to soldering, like I've done [here](https://github.com/brev-dev/another_esp8266_sensor_board/blob/7ec4fd718edccba7780aa4c0607bf689e7137857/images/bme280_trimmed_pins.jpg).
+
+The sensor can communicate by I2C or SPI; most people seem to use I2C, for which you need to make no board alterations. If you want the SPI interface, close a [couple](https://github.com/brev-dev/another_esp8266_sensor_board/blob/bff7ac836695f352a52cb5e7e18f4aab712b4d77/images/rear_solder_bridges_bme_spi.jpg) of solder bridges on the rear to connect the additional pins. On board V5, one of these connections also powers the moisture sensor, so alterations would be needed if you want to run both the BME280 (with SPI interface) and a moisture sensor concurrently.
+
+#####Notes
+- The BME280 is reported to be a nicely precise sensor, but not always accurate. Specifically, the temperature sensor produces high readings (by up to a couple of degrees) due to the heat produced by the sensor itself when active. The level of this offset depends on how you run the sensor: if you only wake it up for readings, putting it to sleep inbetween, the offset is smaller than if you run it continually. However, since the offset appears consistent, you can easily calibrate it out post-measurement.
+- Hey, when did this sensor become so expensive?! As of mid-2021, there's [apparently](https://forum.sensor.community/t/bme280-global-shortage/413) a global shortage which will hopefully end soon.
+  - At the current prices, maybe it's worth stumping for the BME680 (like the BME280, with an additional VOC sensor). This looks as though it's pin-compatible for I2C. With SPI, you'd need to swap the two additional pins (which could be achieved with crossing links across solder bridges JP3 and JP4)
+  - If cost is important, some projects are swapping-out the BME280 for an SHT31. This is also I2C, just no pressure sensor. I have no experience of this sensor, but it looks to be a simple swap-in.
+
+
+#### CO<sub>2</sub> (MH-Z19C)
+
+This is the priciest sensor I use, but I think it's worth it vs the cheaper VOC alternatives. It communicates over the UART bus (so esp8266 pins Rx and Tx). You therefore want to ensure the sensor isn't connected if you're trying to flash the ESP or use its serial interface.
+
+To use the MH-Z19C on the board V5, you need to [connect two solder bridges on the rear](https://github.com/brev-dev/another_esp8266_sensor_board/blob/bff7ac836695f352a52cb5e7e18f4aab712b4d77/images/rear_solder_bridges_CO2.jpg). In hindsight I can't think of a good use-case when you wouldn't want those bridged, so I'll probably just swap the pads out for continuous traces on any future version.
+
+##### Notes
+- As usual, Andreas Spiess has a good [video](https://youtu.be/FL0L-nic9Vw) on the topic.
+- This sensor is powered by 5V, not 3.3V like most of the other components. For this reason, you should only use this sensor when running from USB power (the board has no step-up capabilities for getting 5V from the battery, and since the MH-Z19C is designed to be continuously-powered, it'd probably be a big battery drain anyway.
+- As currently wired (board V5) the sensor will continue running even if the board's power switch is turned to off. This is because it's connected earlier in the power circuit: I haven't tested whether it will run reliably on the lower voltage that'll be present after the power-sharing doide D2.
+- As noted above, cannot be mounted on the board at the same time as a BH1750.
+- When I first started this project, the manufacturer was in the process of changing from Z19B to the newer Z19C sensors and they were hard to come by. The situation seems to have improved. Choose a Z19C if available (better performance, apparently), and select the one with pins if you plan to directly mount it into the two corresponding board sockets.
+
+
+#### Lux (BH1750)
+This is a simple and reliable photodiode, combined with an I2C interface. You can buy it in various form-factors, with the light-ball version being particularly convenient for our purposes. [Trim-down the plastic parts of the built-in connector](https://github.com/brev-dev/another_esp8266_sensor_board/blob/7ec4fd718edccba7780aa4c0607bf689e7137857/images/bh1750_trimmed.jpg), and this can now plug directly into a standard 2mm-pitch pin header, as included on board V5. The light ball can be popped off the sensor and directly mounted into the [top of the enclosure](https://github.com/brev-dev/another_esp8266_sensor_board/blob/5aa659a7452a0eb0ab53f27bc85ff3bf4364177d/images/bh1750_case.jpg).
+
+##### Notes
+- This sensor can't be mounted at the same time as the MH-Z19C below, for purely physical reasons. There are no port conflicts, so they'll happily operate concurrently if you make PCB changes, or connect one or other with an extension cable.
+
+#### Moisture
+
+In order to stop the moisture sensor running constantly and draining the battery, it's powered directly by gpio12. Bridge the right pad of JP3 to the centre pad to make that connection. It doesn't draw much current, so I've had no problems directly powering the sensor directly from a gpio pin. If it turned out to be a brown-out/stability issue in the future, this connection would need to be replaced by a MOSFET.
+
 
 ## Design & Fabrication
 
