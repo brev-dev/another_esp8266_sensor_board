@@ -58,7 +58,7 @@ The use of an esp8266 comes with some limitations, specifically around available
 
 
 ### Why use this board, and not *\*insert-off-the-shelf-microcontroller-board-here\**?
-You could (and probably should?!) use something else. I initially designed this as a way to learn about IoT sensors and circuit design/fabrication. I’ve stuck with it because it provides several advantages over off-the-shelf boards:
+You could (should?!) use something else. I initially designed this as a way to learn about IoT sensors and circuit design/fabrication. I’ve stuck with it because it provides several advantages over off-the-shelf boards:
 1.	Convenient project-box fit without 3D printing
 2.	No tangle of wires: most sensors are directly mounted to the board
 3.	Theoretically better protection & stability (control over noise-suppression features, battery polarity protection, and voltage supervision). Of course, in practice this benefit is probably more than outweighed by my lack of board-design experience.
