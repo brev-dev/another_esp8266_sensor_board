@@ -21,7 +21,7 @@ This repo contains build instructions for a multi-purpose esp8266 sensor device 
   - [Water pump, and connector](https://github.com/brev-dev/another_esp8266_sensor_board#water-pump-and-connector)
   - [Enclosure](https://github.com/brev-dev/another_esp8266_sensor_board#enclosure)
   - [Sensors](https://github.com/brev-dev/another_esp8266_sensor_board#sensors)
-    - [Temperature/Humidity/Pressure (BME280)](https://github.com/brev-dev/another_esp8266_sensor_board#temperaturehumiditypressure-bme280)
+    - [Temperature, humidity, pressure (BME280)](https://github.com/brev-dev/another_esp8266_sensor_board#temperaturehumiditypressure-bme280)
     - [Lux (BH1750)](https://github.com/brev-dev/another_esp8266_sensor_board#lux-bh1750)
     - [CO<sub>2</sub> (MH-Z19C)](https://github.com/brev-dev/another_esp8266_sensor_board#co2-mh-z19c)
     - [Moisture](https://github.com/brev-dev/another_esp8266_sensor_board#moisture)
@@ -190,9 +190,9 @@ I chose [this project box](https://github.com/brev-dev/another_esp8266_sensor_bo
 
 \**I've purchased from those links in the past, but they're provided with no guarantee. I also don't plan to update them when they inevitably expire.*
 
-#### Temperature/humidity/pressure (BME280)
+#### Temperature, humidity, pressure (BME280)
 
-This is a very handy temperature, humidity, and pressure sensor. With my board's current mount point, the BME280 sensor-chip sits outside of the enclosure. I find this convenient because I don't have to worry about airflow within the box. If the current geometry offends you, or you need a more robust device where the sensor won't risk getting damaged, consider a redesign on the connection point, or choose an alternative sensor with a built-in cage.
+This is a very handy temperature, humidity and pressure sensor. With the sensor's current mount point, it sits partially outside of the enclosure. I find this convenient because I don't have to worry about airflow within the box. If the current geometry offends you, or you need a more robust device where the sensor won't risk getting damaged, consider a redesign on the connection point, or choose an alternative sensor with a built-in cage.
 
 You might find that the soldered pins get in the way of closing the enclosure lid properly. If this is the case you can trim them prior to soldering, like I've done [here](https://github.com/brev-dev/another_esp8266_sensor_board/blob/7ec4fd718edccba7780aa4c0607bf689e7137857/images/bme280_trimmed_pins.jpg).
 
