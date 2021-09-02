@@ -36,16 +36,12 @@ This repo contains build instructions for a multi-purpose esp8266 sensor device 
 
 This board meets most of my home-automation hardware needs. It fits in a [cheap, widely-available enclosure](https://github.com/brev-dev/another_esp8266_sensor_board/blob/52ce970f76a799b5d4ab854d0ae5fb7a4b1d066b/images/project_box.webp) (no 3d printing required), and can be powered either by a LiPo battery (voltage-monitoring, charging, reverse-polarity, and protection circuitry included) or USB, with appropriate power sharing if the USB and battery are connected simultaneously. On the software side, I’ve kept things as high-level as possible: Tasmota for most usage scenarios; micropython where needed. Communication utilizes the MQTT protocol over Wi-Fi, or LORA (I use the board as both a [remote LORA sensor, and as a LORA-MQTT bridge](https://github.com/brev-dev/LORA_esp8266_sensor_MQTT_bridge/)).
 
-The board is designed for the following sensors, as well as motor/pump control (for automatic plant watering). GPIO pins remain easily-accessible, so this board can also be used as the basis for many other sensors.
+The board is designed for the following [sensors](https://github.com/brev-dev/another_esp8266_sensor_board#sensors), as well as motor/pump control (for automatic plant watering). GPIO pins remain easily-accessible, so this board can also be used as the basis for many other sensors.
 
-| Property | Module | Board Connection | Datasheet | Purchase Link\*|
-| ---| --- | --- | :---: | --- |
-| Temperature, pressure, humidity | BME280 | Direct (2.54mm headers) | [Link](https://github.com/brev-dev/another_esp8266_sensor_board/blob/e3f53c214705e32eaa9f90e711b66ee1d1c71691/datasheets/BST-BME280_DS001-11-844833.pdf) | |
-| Moisture | “Capacitive soil moisture sensor V1.2” | Audio plug | [Link](https://github.com/brev-dev/another_esp8266_sensor_board/blob/e3f53c214705e32eaa9f90e711b66ee1d1c71691/datasheets/sen0193-humedad-de-suelos.pdf) (older version) | [AliExpress](https://www.aliexpress.com/item/32908693444.html) |
-|	Lux | BH1750 | Direct (2.00mm headers) | [Link](https://github.com/brev-dev/another_esp8266_sensor_board/blob/d842e8ac7ead9bd1a256e17d498e4c6692d75f80/datasheets/BH1750FVI.pdf) | [AliExpress](https://www.aliexpress.com/item/32983784786.html) |
-|	CO<sub>2</sub> | MH-Z19C | Direct (2.54mm headers) | [Link](https://github.com/brev-dev/another_esp8266_sensor_board/blob/55dd2d41b445c80636574d447e5fac080cfa47e3/datasheets/mh-z19c-pins-type-co2-manual-ver1_0.pdf) | [AliExpress](https://www.aliexpress.com/item/4000586074848.html) |
-
-\**I've purchased from those links in the past, but they're provided with no guarantee. I also don't plan to update them when they inevitably expire.*
+- [Temperature/Humidity/Pressure (BME280)](https://github.com/brev-dev/another_esp8266_sensor_board#temperaturehumiditypressure-bme280)
+- [Lux (BH1750)](https://github.com/brev-dev/another_esp8266_sensor_board#lux-bh1750)
+- [CO<sub>2</sub> (MH-Z19C)](https://github.com/brev-dev/another_esp8266_sensor_board#co2-mh-z19c)
+- [Moisture](https://github.com/brev-dev/another_esp8266_sensor_board#moisture)
 
 The use of an esp8266 comes with some limitations, specifically around available GPIO, and only one ADC port. This means that not all potential functionality is available at the same time. Yes, these limitations could be overcome either with a port splitter, or by utilizing a different microcontroller such as an ESP32; however part of the fun for me was seeing how much I could do with only the esp8266, and the end result fits all of my use-cases.
 
@@ -176,6 +172,16 @@ For simplicity, and since the small pumps seem to be able to function over quite
 For the pump's board connection, there's a footprint for a DC-002 socket. I considered using a USB socket but decided that was misleading since the output voltage isn't always the 5V that one would expect from USB. On the board pictured above, I skipped the power-jack socket and simply connected a double pin-header socket instead.
 
 ### Sensors
+
+
+| Property | Module | Board Connection | Datasheet | Purchase Link\*|
+| ---| --- | --- | :---: | --- |
+| Temperature, pressure, humidity | BME280 | Direct (2.54mm headers) | [Link](https://github.com/brev-dev/another_esp8266_sensor_board/blob/e3f53c214705e32eaa9f90e711b66ee1d1c71691/datasheets/BST-BME280_DS001-11-844833.pdf) | |
+|	Lux | BH1750 | Direct (2.00mm headers) | [Link](https://github.com/brev-dev/another_esp8266_sensor_board/blob/d842e8ac7ead9bd1a256e17d498e4c6692d75f80/datasheets/BH1750FVI.pdf) | [AliExpress](https://www.aliexpress.com/item/32983784786.html) |
+|	CO<sub>2</sub> | MH-Z19C | Direct (2.54mm headers) | [Link](https://github.com/brev-dev/another_esp8266_sensor_board/blob/55dd2d41b445c80636574d447e5fac080cfa47e3/datasheets/mh-z19c-pins-type-co2-manual-ver1_0.pdf) | [AliExpress](https://www.aliexpress.com/item/4000586074848.html) |
+| Moisture | “Capacitive soil moisture sensor V1.2” | Audio plug | [Link](https://github.com/brev-dev/another_esp8266_sensor_board/blob/e3f53c214705e32eaa9f90e711b66ee1d1c71691/datasheets/sen0193-humedad-de-suelos.pdf) (older version) | [AliExpress](https://www.aliexpress.com/item/32908693444.html) |
+
+\**I've purchased from those links in the past, but they're provided with no guarantee. I also don't plan to update them when they inevitably expire.*
 
 #### Temperature/humidity/pressure (BME280)
 
