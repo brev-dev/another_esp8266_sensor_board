@@ -21,8 +21,8 @@ This repo contains build instructions for a multi-purpose esp8266 sensor device 
   - [Water pump, and connector](https://github.com/brev-dev/another_esp8266_sensor_board#water-pump-and-connector)
   - [Sensors](https://github.com/brev-dev/another_esp8266_sensor_board#sensors)
     - [Temperature/Humidity/Pressure (BME280)](https://github.com/brev-dev/another_esp8266_sensor_board#temperaturehumiditypressure-bme280)
-    - [CO<sub>2</sub> (MH-Z19C)](https://github.com/brev-dev/another_esp8266_sensor_board#co2-mh-z19c)
     - [Lux (BH1750)](https://github.com/brev-dev/another_esp8266_sensor_board#lux-bh1750)
+    - [CO<sub>2</sub> (MH-Z19C)](https://github.com/brev-dev/another_esp8266_sensor_board#co2-mh-z19c)
     - [Moisture](https://github.com/brev-dev/another_esp8266_sensor_board#moisture)
 - [Design & fabrication](https://github.com/brev-dev/another_esp8266_sensor_board#design--fabrication)
 - [Software](https://github.com/brev-dev/another_esp8266_sensor_board#software)
@@ -98,7 +98,7 @@ Conveniently, the XC6203P332PR is also compatible with the[ white ESP-12F adapto
 
 I learned the hard way about the electrical-noise sensitivity of the ESP8266: on V3 of the board, it would reboot whenever the watering motor was activated. I overcame this in V4 with component repositioning (moving the motor to the far end away from the microcontroller), adding extra capacitors next to the motor connection, increasing power trace width vs signal traces, minimizing loops on the ground plane, and separating the motor ground-plane return path from the rest of the components.
 
-### ESP8266
+### ESP8266 [top](https://github.com/brev-dev/another_esp8266_sensor_board#another_esp8266_sensor_board)
 The board is designed for an ESP-12F. I tend to flash the chip in a [programmer board](https://github.com/brev-dev/another_esp8266_sensor_board/blob/0b8a2c9c500916e484b68a6f7c3c33d089ebb65e/images/esp-12f%20programmer.jpg) prior to soldering it on, just to check it's working.
 
 When installed, it can be flashed in the normal way by connecting a USB-UART interface board to the appropriate pins.
@@ -191,6 +191,11 @@ The sensor can communicate by I2C or SPI; most people seem to use I2C, for which
   - At the current prices, maybe it's worth stumping for the BME680 (like the BME280, with an additional VOC sensor). This looks as though it's pin-compatible for I2C. With SPI, you'd need to swap the two additional pins (which could be achieved with crossing links across solder bridges JP3 and JP4)
   - If cost is important, some projects are swapping-out the BME280 for an SHT31. This is also I2C, just no pressure sensor. I have no experience of this sensor, but it looks to be a simple swap-in.
 
+#### Lux (BH1750)
+This is a simple and reliable photodiode, combined with an I2C interface. You can buy it in various form-factors, with the light-ball version being particularly convenient for our purposes. [Trim-down the plastic parts of the built-in connector](https://github.com/brev-dev/another_esp8266_sensor_board/blob/7ec4fd718edccba7780aa4c0607bf689e7137857/images/bh1750_trimmed.jpg), and this can now plug directly into a standard 2mm-pitch pin header, as included on board V5. The light ball can be popped off the sensor and directly mounted into the [top of the enclosure](https://github.com/brev-dev/another_esp8266_sensor_board/blob/5aa659a7452a0eb0ab53f27bc85ff3bf4364177d/images/bh1750_case.jpg).
+
+*Notes*
+- This sensor can't be mounted at the same time as the MH-Z19C below, for purely physical reasons. There are no port conflicts, so they'll happily operate concurrently if you make PCB changes, or connect one or other with an extension cable.
 
 #### CO<sub>2</sub> (MH-Z19C)
 
@@ -204,13 +209,6 @@ To use the MH-Z19C on the board V5, you need to [connect two solder bridges on t
 - As currently wired (board V5) the sensor will continue running even if the board's power switch is turned to off. This is because it's connected earlier in the power circuit: I haven't tested whether it will run reliably on the lower voltage that'll be present after the power-sharing doide D2.
 - As noted above, cannot be mounted on the board at the same time as a BH1750.
 - When I first started this project, the manufacturer was in the process of changing from Z19B to the newer Z19C sensors and they were hard to come by. The situation seems to have improved. Choose a Z19C if available (better performance, apparently), and select the one with pins if you plan to directly mount it into the two corresponding board sockets.
-
-
-#### Lux (BH1750)
-This is a simple and reliable photodiode, combined with an I2C interface. You can buy it in various form-factors, with the light-ball version being particularly convenient for our purposes. [Trim-down the plastic parts of the built-in connector](https://github.com/brev-dev/another_esp8266_sensor_board/blob/7ec4fd718edccba7780aa4c0607bf689e7137857/images/bh1750_trimmed.jpg), and this can now plug directly into a standard 2mm-pitch pin header, as included on board V5. The light ball can be popped off the sensor and directly mounted into the [top of the enclosure](https://github.com/brev-dev/another_esp8266_sensor_board/blob/5aa659a7452a0eb0ab53f27bc85ff3bf4364177d/images/bh1750_case.jpg).
-
-*Notes*
-- This sensor can't be mounted at the same time as the MH-Z19C below, for purely physical reasons. There are no port conflicts, so they'll happily operate concurrently if you make PCB changes, or connect one or other with an extension cable.
 
 #### Moisture
 
