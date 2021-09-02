@@ -1,4 +1,4 @@
-# another_esp8266_sensor_board
+# Another ESP8266 Sensor Board
 
 This repo contains build instructions for a multi-purpose esp8266 sensor device for home IoT projects. 
 
@@ -34,7 +34,7 @@ This repo contains build instructions for a multi-purpose esp8266 sensor device 
 
 ## Introduction
 
-This board meets most of my home-automation hardware needs. It fits in a [cheap, widely-available enclosure](https://github.com/brev-dev/another_esp8266_sensor_board/blob/52ce970f76a799b5d4ab854d0ae5fb7a4b1d066b/images/project_box.webp) (no 3d printing required), and can be powered either by a LiPo battery (voltage-monitoring, charging, reverse-polarity, and protection circuitry included) or USB, with appropriate power sharing if the USB and battery are connected simultaneously. On the software side, I’ve kept things as high-level as possible: Tasmota for most usage scenarios; micropython where needed. Communication utilizes the MQTT protocol over Wi-Fi, or LORA (I use the board as both a [remote LORA sensor, and as a LORA-MQTT bridge](https://github.com/brev-dev/LORA_esp8266_sensor_MQTT_bridge/)).
+This sensor board meets most of my home-automation hardware needs. It fits in a [cheap, widely-available enclosure](https://github.com/brev-dev/another_esp8266_sensor_board/blob/52ce970f76a799b5d4ab854d0ae5fb7a4b1d066b/images/project_box.webp) (no 3d printing required), and can be powered either by a LiPo battery (voltage-monitoring, charging, reverse-polarity, and protection circuitry included) or USB, with appropriate power sharing if the USB and battery are connected simultaneously. On the software side, I’ve kept things as high-level as possible: Tasmota for most usage scenarios; micropython where needed. Communication utilizes the MQTT protocol over Wi-Fi, or LORA (I use the board as both a [remote LORA sensor, and as a LORA-MQTT bridge](https://github.com/brev-dev/LORA_esp8266_sensor_MQTT_bridge/)).
 
 The board is designed for the following [sensors](https://github.com/brev-dev/another_esp8266_sensor_board#sensors), as well as motor/pump control (for automatic plant watering). GPIO pins remain easily-accessible, so this board can also be used as the basis for many other sensors.
 
@@ -56,7 +56,7 @@ The use of an esp8266 comes with some limitations, specifically around available
 | ![V5 boards](https://github.com/brev-dev/another_esp8266_sensor_board/blob/18c1c6acd3ac308fd4a820b2b3c71c050f9b53bc/images/V5_boards.jpg) |
 
 ### Why use this board, and not *\*insert-off-the-shelf-microcontroller-board-here\**?
-You could (and probably should?!) use something else. I initially designed this board as a way to learn about IoT sensors and circuit design/fabrication. I’ve stuck with it because it provides several advantages over off-the-shelf boards:
+You could (and probably should?!) use something else. I initially designed this as a way to learn about IoT sensors and circuit design/fabrication. I’ve stuck with it because it provides several advantages over off-the-shelf boards:
 1.	Convenient project-box fit without 3D printing
 2.	No tangle of wires: most sensors are directly mounted to the board
 3.	Theoretically better protection & stability (control over noise-suppression features, battery polarity protection, and voltage supervision). Of course, in practice this benefit is probably more than outweighed by my lack of board-design experience.
@@ -232,7 +232,9 @@ Please be understanding with [the schematic](https://github.com/brev-dev/another
 
 ### Enclosure
 
-8mm M2.6 screws are needed to attach the board to the box, such as these ([purchase link](https://www.aliexpress.com/item/4000108693024.html))
+I chose [this enclosure](https://github.com/brev-dev/another_esp8266_sensor_board/blob/52ce970f76a799b5d4ab854d0ae5fb7a4b1d066b/images/project_box.webp) for the project because it's cheap, widely-available, and just the right size for the pcb and an 18650 battery.
+
+8mm M2.6 screws are needed to attach the board to the box, such as [these](https://www.aliexpress.com/item/4000108693024.html).
 
 ## Software
 
