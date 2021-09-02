@@ -1,6 +1,34 @@
 # another_esp8266_sensor_board
 
-This repo contains build instructions for a multi-purpose esp8266 sensor device for home IoT projects. This board meets most of my home-automation hardware needs. It fits in a [cheap, widely-available enclosure](https://github.com/brev-dev/another_esp8266_sensor_board/blob/52ce970f76a799b5d4ab854d0ae5fb7a4b1d066b/images/project_box.webp) (no 3d printing required), and can be powered either by a LiPo battery (voltage-monitoring, charging, reverse-polarity, and protection circuitry included) or USB, with appropriate power sharing if the USB and battery are connected simultaneously. On the software side, I’ve kept things as high-level as possible: Tasmota for most usage scenarios; micropython where needed. Communication utilizes the MQTT protocol over Wi-Fi, or LORA (I use the board as both a [remote LORA sensor, and as a LORA-MQTT bridge](https://github.com/brev-dev/LORA_esp8266_sensor_MQTT_bridge/)).
+This repo contains build instructions for a multi-purpose esp8266 sensor device for home IoT projects. 
+
+- [Introduction]
+  - [Example devices](https://github.com/brev-dev/another_esp8266_sensor_board#example-devices)
+  - [Why use this board?](https://github.com/brev-dev/another_esp8266_sensor_board#why-use-this-board-and-not-insert-off-the-shelf-microcontroller-board-here)
+- [Component discussion](https://github.com/brev-dev/another_esp8266_sensor_board#component-discussion)
+  - [Power](https://github.com/brev-dev/another_esp8266_sensor_board#power)
+  - [LDO regulator](https://github.com/brev-dev/another_esp8266_sensor_board#ldo-regulator)
+  - [Electrical Noise](https://github.com/brev-dev/another_esp8266_sensor_board#electrical-noise)
+  - [ESP8266](https://github.com/brev-dev/another_esp8266_sensor_board#esp8266)
+  - [Voltage supervisor](https://github.com/brev-dev/another_esp8266_sensor_board#voltage-supervisor-optional-with-jumper-jp1)
+  - [LORA module](https://github.com/brev-dev/another_esp8266_sensor_board#lora-rfwm95w-module)
+  - [BME280 sensor](https://github.com/brev-dev/another_esp8266_sensor_board#bme280-sensor-temperature-pressure-humidity)
+  - [ADC connections](https://github.com/brev-dev/another_esp8266_sensor_board#adc-connections)
+  - [Moisture sensor](https://github.com/brev-dev/another_esp8266_sensor_board#moisture-sensor)
+  - [BH1750 sensor](https://github.com/brev-dev/another_esp8266_sensor_board#bh1750-sensor-lux)
+  - [MH-Z19C sensor](https://github.com/brev-dev/another_esp8266_sensor_board#mh-z19c-sensor-co2)
+  - [Water pump, and connector](https://github.com/brev-dev/another_esp8266_sensor_board#water-pump-and-connector)
+- [Design & fabrication](https://github.com/brev-dev/another_esp8266_sensor_board#design--fabrication)
+- [Software](https://github.com/brev-dev/another_esp8266_sensor_board#software)
+  - [Tasmota](https://github.com/brev-dev/another_esp8266_sensor_board#tasmota)
+  - [Micropython](https://github.com/brev-dev/another_esp8266_sensor_board#micropython)
+- [Home IOT setup](https://github.com/brev-dev/another_esp8266_sensor_board#home-iot-setup)
+- [Todo](https://github.com/brev-dev/another_esp8266_sensor_board#todo-could-be-done-not-necessarily-will-be-done)
+
+
+## Introduction
+
+This board meets most of my home-automation hardware needs. It fits in a [cheap, widely-available enclosure](https://github.com/brev-dev/another_esp8266_sensor_board/blob/52ce970f76a799b5d4ab854d0ae5fb7a4b1d066b/images/project_box.webp) (no 3d printing required), and can be powered either by a LiPo battery (voltage-monitoring, charging, reverse-polarity, and protection circuitry included) or USB, with appropriate power sharing if the USB and battery are connected simultaneously. On the software side, I’ve kept things as high-level as possible: Tasmota for most usage scenarios; micropython where needed. Communication utilizes the MQTT protocol over Wi-Fi, or LORA (I use the board as both a [remote LORA sensor, and as a LORA-MQTT bridge](https://github.com/brev-dev/LORA_esp8266_sensor_MQTT_bridge/)).
 
 ![board3d](https://user-images.githubusercontent.com/77922126/128489871-9f01f8df-6a2a-4f25-b7f5-ae4963dc2fc5.png)
 *Board V5, partially populated. Image generated in KiCad.*
