@@ -290,7 +290,7 @@ The "hub" is a Raspberry Pi 4 equipped with Mosquitto, NodeRed, InfluxDB, and Gr
 - Tidy-up the schematic
 - Increase R12 to 10k (or even as high as 33k) to reduce the ferocity of green LED5
 - Increase length of USB-C pin solder pads
-- Add optional battery-polarity-protection bypass route (short pins 2 & 3 of Q1)
+- Add optional battery-polarity-protection bypass route (short pins 2 & 3 of Q1), or remove this additional circuitry
 - Change position of, or rotate, Q4 (really hard to solder when SW1 is present)
 - Round corners of board and cutout esp antenna area
 - Remove (and join) JP8 and JP9, the jumpers to the Rx and Tx ports on the CO<sub>2</sub> sensor
