@@ -300,5 +300,6 @@ The "hub" is a Raspberry Pi 4 equipped with Mosquitto, NodeRed, InfluxDB, and Gr
   - Wire-up extra analog ports
     - Dedicated battery-monitoring port
     - Additional moisture-sensor ports
+  - Built-in USB JTAG interface
 - Add a separately-powered RTC to improve deep-sleep battery drain.
 
