@@ -245,6 +245,9 @@ Please be understanding with [the schematic](https://github.com/brev-dev/another
 For convenience, I use Tasmota for all devices where possible. Tasmota can't handle LORA, so for these devices I use micropython.
 
 ### Tasmota
+
+[Web install link](https://tasmota.github.io/install/)
+
 Make sure you install the "sensors" version of the tasmota image.
 
 Here are some Tasmota screenshots from the V4 device [pictured](https://github.com/brev-dev/another_esp8266_sensor_board/blob/f81dc558d201dd6b186f64b55d8d96105131c601/images/example_board_v4.jpg) at the top of this readme.
