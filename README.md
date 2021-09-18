@@ -267,7 +267,7 @@ Here are the main settings I changed from their default in the control interface
    1. It's probably fixable within Tasmota's other options (maybe SetOption63?)
    2. Add a retained MQTT POWER2 ON command. 
    3. Set GPIO12 (the pin powering the moisture sensor) to `Output Hi` rather than `Relay 2`, so it's set high early in Tasmota's boot process.
-- Tasmota can probably also be configured to carry-out the watering function directly when the moisture goes below a certain level. However, I carry this out in NodeRed, broadcasting the command to the device by MQTT.
+- Tasmota can probably also be configured to carry-out the watering function directly, when the moisture goes below a certain level. However, I do this in NodeRed, broadcasting the command to the device by MQTT.
 
 ### MicroPython
 
