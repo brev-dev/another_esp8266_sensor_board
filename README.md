@@ -298,6 +298,7 @@ The "hub" is a Raspberry Pi 4 equipped with Mosquitto, NodeRed, InfluxDB, and Gr
 - Change position of, or rotate, Q4 (really hard to solder when SW1 is present)
 - Round corners of board and cutout esp antenna area
 - Remove (and join) JP8 and JP9, the jumpers to the Rx and Tx ports on the CO<sub>2</sub> sensor
+- Optionally override the sleep mode switch when plugged into external power (such as the second example [here](https://tasmota.github.io/docs/DeepSleep/#using-a-switch)).
 - Add UART-USB interface (e.g. CP2104)
 - Convert board to esp32 (potentially the new esp32-c3f, as it's footprint-compatible?)
   - Wire-up extra GPIO
