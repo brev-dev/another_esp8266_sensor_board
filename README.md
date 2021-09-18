@@ -263,7 +263,10 @@ Here are the main settings I changed from their default in the control interface
 
 *Notes*
 - I leave the analog signal reported as raw values, and then calibrate this later (in NodeRed). I believe you could also setup the calibration in Tasmota's control interface. On the example device, the moisture sensor gave a reading of 605 when dry and 282 when submerged in water. An Analog0 reading of 482 therefore corresponds to a moisture level of 38%.
-- When configured as above, power is sent to the moisture sensor when Toggle 2 is set to ON. I expect this state to survive reboots and deep sleep because Tasmota's [PowerOnState](https://tasmota.github.io/docs/PowerOnState/) is set to 3. Unfortunately this isn't happening, so the moisture sensor isn't working by default when the device wakes. This is probably fixable within Tasmota's other options (maybe SetOption63?), but for now I've fixed it by adding a retained MQTT POWER2 ON command. Setting the relay to [Output Hi](https://github.com/arendst/Tasmota/discussions/8467#discussioncomment-452761) might also be a solution here.
+- When configured as above, power is sent to the moisture sensor when Toggle 2 is set to ON. I expect this state to survive reboots and deep sleep because Tasmota's [PowerOnState](https://tasmota.github.io/docs/PowerOnState/) is set to 3. Unfortunately this isn't happening, so the moisture sensor isn't working by default when the device wakes. You've got a few ways of avoiding this problem:
+   1. It's probably fixable within Tasmota's other options (maybe SetOption63?)
+   2. Add a retained MQTT POWER2 ON command. 
+   3. Set GPIO12 (the pin powering the moisture sensor) to `Output Hi` rather than `Relay 2`, so it's set high early in Tasmota's boot process.
 - Tasmota can probably also be configured to carry-out the watering function directly when the moisture goes below a certain level. However, I carry this out in NodeRed, broadcasting the command to the device by MQTT.
 
 ### MicroPython
