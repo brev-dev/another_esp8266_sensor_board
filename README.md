@@ -220,7 +220,7 @@ To use the MH-Z19C on the board V5, you need to [connect two solder bridges on t
 
 *Notes*
 - As usual, Andreas Spiess has a good [video](https://youtu.be/FL0L-nic9Vw) on the topic.
-- This sensor is powered by 5V, not 3.3V like most of the other components. For this reason, you should only use this sensor when running from USB power (the board has no step-up capabilities for getting 5V from the battery, and since the MH-Z19C is designed to be continuously-powered, it'd probably be a big battery drain anyway.
+- This sensor is powered by 5V, not 3.3V like most of the other components. For this reason, you should only use it when running from USB power (the board has no step-up capabilities for getting 5V from the battery, and since the MH-Z19C is designed to be continuously-powered, it'd probably be a big battery drain anyway).
 - As currently wired (board V5) the sensor will continue running even if the board's power switch is turned to off. This is because it's connected earlier in the power circuit: I haven't tested whether it will run reliably on the lower voltage that'll be present after the power-sharing doide D2.
 - As noted above, cannot be mounted on the board at the same time as a BH1750.
 - When I first started this project, the manufacturer was in the process of changing from Z19B to the newer Z19C sensors and they were hard to come by. The situation seems to have improved. Choose a Z19C if available (better performance, apparently), and select the one with pins if you plan to directly mount it into the two corresponding board sockets.
