@@ -260,6 +260,7 @@ Here are the main settings I changed from their default in the control interface
 - DeepSleepTime 120 (defines the time between readings in seconds if you are using DeepSleep)
 - SetOption65 1 (disables device recovery using [fast power cycle detection](https://tasmota.github.io/docs/Device-Recovery/#fast-power-cycle-device-recovery). Instead, the device can be reset to defaults by pressing the flash button (GPIO0) for 40 seconds.
 - TelePeriod 120 (seconds between MQTT reports - the default of 300seconds is a bit long for some of the environmental sensors)
+- SerialLog 0 (only for things that use the serial port, such as the [433Mhz MQTT gateway](https://tasmota.github.io/docs/devices/Sonoff-RF-Bridge-433/#flash-tasmota): disable serial logging so it doesn't interfere with access to the module)
 
 *Notes*
 - I leave the analog signal reported as raw values, and then calibrate this later (in NodeRed). I believe you could also setup the calibration in Tasmota's control interface. On the example device, the moisture sensor gave a reading of 605 when dry and 282 when submerged in water. An Analog0 reading of 482 therefore corresponds to a moisture level of 38%.
